@@ -118,24 +118,60 @@
         </h2>
         <div class="slider">
           <div class="slider__buttons">
-            <button class="slider__button"></button>
-            <button class="slider__button"></button>
+            <button class="slider__button">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <g id="arrow-left">
+                  <path
+                    id="Vector"
+                    d="M18.5 12H6M6 12L12 6M6 12L12 18"
+                    stroke="#403F3D"
+                    stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </g>
+              </svg>
+            </button>
+            <button class="slider__button">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <g id="arrow-right">
+                  <path
+                    id="Vector"
+                    d="M6 12H18.5M18.5 12L12.5 6M18.5 12L12.5 18"
+                    stroke="#403F3D"
+                    stroke-linecap="round"
+                    stroke-linejoin="round" />
+                </g>
+              </svg>
+            </button>
           </div>
           <div class="slider__content">
-            <img src="" alt="" class="slider__img" />
+            <img
+              width="480"
+              src="img/coffee-slider-1.png"
+              alt=""
+              class="slider__img" />
             <h3 class="slider__title">S’mores Frappuccino</h3>
             <p class="slider__description">
               This new drink takes an espresso and mixes it with brown sugar and
               cinnamon before being topped with oat milk.
             </p>
             <h3 class="slider__price">$5.50</h3>
+            <ul class="slider__pagination">
+              <li
+                class="slider__pagination-item slider__pagination-item--active"></li>
+              <li class="slider__pagination-item"></li>
+              <li class="slider__pagination-item"></li>
+            </ul>
           </div>
-          <ul class="slider__pagination">
-            <li
-              class="slider__pagination-item slider__pagination-item--active"></li>
-            <li class="slider__pagination-item"></li>
-            <li class="slider__pagination-item"></li>
-          </ul>
         </div>
       </section>
       <section class="about" id="about">
@@ -146,10 +182,18 @@
           get some work done.
         </h2>
         <div class="gallery">
-          <div class="galley__item"></div>
-          <div class="galley__item"></div>
-          <div class="galley__item"></div>
-          <div class="galley__item"></div>
+          <div class="galley__item galley__item--big">
+            <img src="img/about-1.jpg" alt="" />
+          </div>
+          <div class="galley__item">
+            <img src="img/about-2.jpg" alt="" />
+          </div>
+          <div class="galley__item">
+            <img src="img/about-3.jpg" alt="" />
+          </div>
+          <div class="galley__item galley__item--big">
+            <img src="img/about-4.jpg" alt="" />
+          </div>
         </div>
       </section>
       <section class="app" id="app">
