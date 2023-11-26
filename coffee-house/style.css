@@ -333,6 +333,78 @@ p {
   border-radius: 20px;
 }
 
+/*app*/
+.app {
+  display: flex;
+  align-items: center;
+  margin-bottom: 100px;
+  justify-content: space-between;
+}
+
+.app__info {
+  display: flex;
+  flex-direction: column;
+  max-width: 630px;
+  width: 100%;
+}
+
+.app__title {
+  margin-bottom: 40px;
+}
+
+.app__description {
+  margin-bottom: 40px;
+}
+
+.app__links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.app__link {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  border-radius: 100px;
+  border: 1px solid var(--border-dark, #665F55);
+  max-width: 200px;
+  width: 100%;
+  transition: all 0.3s;
+}
+
+.app__link:hover {
+  background-color: var(--backdrop);
+  color: var(--txt-light);
+  transition: all 0.3s;
+}
+
+.app__link:hover svg path {
+  fill: var(--txt-light);
+  transition: all 0.3s;
+}
+
+.app__link-icon {
+  margin-right: 8px;
+}
+
+.app__link-txt {
+  display: flex;
+  flex-direction: column;
+}
+
+.app__link-subtxt {
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 140%;
+  margin-bottom: 2px;
+}
+
+.app__link-subtitle {
+  font-weight: 600;
+}
+
 
 /*footer*/
 .footer {
