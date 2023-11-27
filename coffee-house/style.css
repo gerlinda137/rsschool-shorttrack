@@ -88,6 +88,7 @@ p {
 .accent {
   font-style: italic;
   color: var(--txt-accent);
+  font-weight: 600;
 }
 
 .header {
@@ -98,7 +99,9 @@ p {
   margin-bottom: 20px;
 }
 
-.header__logo-link {}
+.header__logo-link {
+  display: flex;
+}
 
 .nav {}
 
@@ -157,6 +160,9 @@ p {
   background-color: var(--container);
   color: var(--txt-light);
   margin-bottom: 100px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .enjoy__inner {
@@ -232,7 +238,8 @@ p {
   position: absolute;
   top: 50%;
   left: 0;
-  transform: translate(0, -50%);
+  transform: translate(0, -85%);
+  padding: 0 4px;
 }
 
 .slider__button {
@@ -243,6 +250,18 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.slider__button:hover {
+  background-color: var(--container);
+  transition: all 0.3s;
+}
+
+.slider__button:hover svg path {
+  stroke: var(--txt-light);
+  transition: all 0.3s;
 }
 
 .slider__content {
@@ -262,6 +281,7 @@ p {
 .slider__description {
   margin-bottom: 16px;
   max-width: 480px;
+  text-align: center;
 }
 
 .slider__price {
@@ -294,11 +314,12 @@ p {
 .about {
   display: flex;
   flex-direction: column;
-  margin-bottom: 100px;
+  margin-bottom: 103px;
 }
 
 .about__title {
   margin-bottom: 40px;
+  font-size: 59.9px;
 }
 
 
@@ -420,8 +441,7 @@ p {
   border-radius: 40px;
   background-color: var(--container);
   display: flex;
-  align-items: center;
-  gap: 100px;
+  gap: 50px;
   width: calc(100% - 80px);
   padding: 100px;
   color: var(--txt-light);
@@ -478,6 +498,7 @@ p {
 .contact-us {
   display: flex;
   flex-direction: column;
+  padding-top: 30px;
 }
 
 .contact-us__title {
@@ -487,7 +508,7 @@ p {
 .contact-list {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
 }
 
 .contact-list__link {
