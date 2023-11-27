@@ -153,6 +153,12 @@ p {
   top: 0;
 }
 
+.header__menu-link.header__menu-link--active {
+  border-bottom: var(--txt) solid 2px;
+  transition: all 0.3s;
+  cursor: auto;
+}
+
 .nav-list__link:hover,
 .header__menu-link:hover {
   border-bottom: var(--txt) solid 2px;
@@ -525,4 +531,125 @@ p {
   top: 50%;
   background-image: url('img/icons/clock.svg');
   transform: translate(0, -50%);
+}
+
+/*menu*/
+.menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 100px;
+}
+
+.menu__title {
+  max-width: 800px;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.tabs {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+}
+
+.tabs__btns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 40px;
+}
+
+.tabs__button {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px 8px 8px;
+  border-radius: 100px;
+  border: 1px solid var(--border-light);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 150%;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.tabs__button:hover {
+  transition: all 0.3s;
+  background-color: var(--container);
+  color: var(--txt-light);
+}
+
+.tabs__button.tabs__button--active {
+  background-color: var(--container);
+  color: var(--txt-light);
+}
+
+.tabs__button.tabs__button--active .tabs__button-icon {
+  background-color: var(--body);
+}
+
+.tabs__button-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 100px;
+  background: var(--border-light);
+  margin-right: 8px;
+}
+
+.tabs__content {
+  display: flex;
+  width: 100%;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 310px);
+  justify-content: center;
+  gap: 40px;
+  width: 100%;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border-light);
+  border-radius: 40px;
+}
+
+.card__img {
+  border-radius: 40px;
+  margin-bottom: 20px;
+
+}
+
+.card__info {
+  display: flex;
+  flex-direction: column;
+  padding: 0 20px 20px 20px;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex: 1 0 0;
+  align-self: stretch;
+}
+
+.card__title {
+  margin-bottom: 12px;
+}
+
+.card__description {
+  margin-bottom: 12px;
+}
+
+.card__price {
+  margin-top: auto;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 125%;
 }
