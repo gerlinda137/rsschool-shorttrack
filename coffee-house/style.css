@@ -140,7 +140,7 @@ p {
 .header__menu-link.header__menu-link--active {
   border-bottom: var(--txt) solid 2px;
   transition: all 0.3s;
-  cursor: auto;
+  pointer-events: none;
 }
 
 .nav-list__link:hover,
@@ -303,24 +303,43 @@ p {
 
 
 .gallery {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 430px);
+  display: flex;
   gap: 40px;
 }
 
-.galley__item {}
+.gallery__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 100%;
+}
+
+.galley__item {
+  height: 430px;
+  overflow: hidden;
+  border-radius: 20px;
+  display: flex;
+}
+
+.galley__item:hover img {
+  scale: 1;
+  transition: all 0.3s;
+}
 
 .galley__item.galley__item--big {
-  grid-column: 0.72;
+  height: 590px;
 }
 
 .galley__item img {
   -o-object-fit: cover;
   object-fit: cover;
+  -o-object-position: center;
+  object-position: center;
   width: 100%;
   height: 100%;
   border-radius: 20px;
+  scale: 1.1;
+  transition: all 0.3s;
 }
 
 /*app*/
@@ -530,6 +549,10 @@ p {
   width: 100%;
   text-align: center;
   margin-bottom: 40px;
+  font-size: 60px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 125%
 }
 
 .tabs {
@@ -569,6 +592,7 @@ p {
 .tabs__button.tabs__button--active {
   background-color: var(--container);
   color: var(--txt-light);
+  pointer-events: none;
 }
 
 .tabs__button.tabs__button--active .tabs__button-icon {
@@ -604,12 +628,33 @@ p {
   flex-direction: column;
   border: 1px solid var(--border-light);
   border-radius: 40px;
+  cursor: pointer;
 }
 
-.card__img {
-  border-radius: 40px;
-  margin-bottom: 20px;
+.card:hover .card__img {
+  transition: all 0.3s;
+  scale: 1;
+}
 
+.card__img-wrapper {
+  overflow: hidden;
+  width: 100%;
+  border-radius: 40px;
+  width: 310px;
+  height: 310px;
+  margin-bottom: 20px;
+  display: flex;
+}
+
+
+
+.card__img {
+  transition: all 0.3s;
+  -o-object-fit: cover;
+  object-fit: cover;
+  -o-object-position: center;
+  object-position: center;
+  scale: 1.1;
 }
 
 .card__info {
