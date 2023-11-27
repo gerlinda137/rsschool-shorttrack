@@ -438,7 +438,7 @@ p {
   background-color: var(--container);
   display: flex;
   gap: 50px;
-  width: calc(100% - 80px);
+  max-width: 1360px;
   padding: 100px;
   color: var(--txt-light);
 }
@@ -513,10 +513,32 @@ p {
   font-weight: 600;
   border-bottom: 2px solid transparent;
   transition: all 0.3s;
+  position: relative;
+}
+
+.contact-list__link::before {
+  content: '';
+  width: 100%;
+  position: absolute;
+  height: 2px;
+  background-color: var(--txt-light);
+  left: 5px;
+  opacity: 0;
+  top: 24px;
+  transition: all 0.3s;
+}
+
+.contact-list__link.contact-list__link--hours {
+  pointer-events: none;
 }
 
 .contact-list__link:hover {
-  border-bottom: var(--txt-light) 2px solid;
+  /* border-bottom: var(--txt-light) 2px solid; */
+  transition: all 0.3s;
+}
+
+.contact-list__link:hover.contact-list__link::before {
+  opacity: 100%;
   transition: all 0.3s;
 }
 
