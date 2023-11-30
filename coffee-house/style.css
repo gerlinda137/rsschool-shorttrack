@@ -628,6 +628,11 @@ p {
   color: var(--txt-light);
 }
 
+.tabs__button:hover .tabs__button-icon {
+  background-color: var(--body);
+  transition: all 0.3s;
+}
+
 .tabs__button.tabs__button--active {
   background-color: var(--container);
   color: var(--txt-light);
