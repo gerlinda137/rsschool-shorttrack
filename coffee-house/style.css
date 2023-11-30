@@ -182,10 +182,10 @@ p {
   border-radius: 100px;
   background-color: var(--body);
   color: var(--txt);
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
+  max-width: 200px;
+  width: 100%;
   position: relative;
+  transition: all 0.3s;
 }
 
 .enjoy__link::after {
@@ -201,8 +201,14 @@ p {
   transition: all 0.3s;
 }
 
+.enjoy__link:hover {
+  padding-left: 62px;
+  transition: all 0.3s;
+}
+
 .enjoy__link:hover.enjoy__link::after {
   opacity: 1;
+  transform: translate(-15px, -50%);
   transition: all 0.3s;
 }
 
