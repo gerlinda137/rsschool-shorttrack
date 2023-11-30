@@ -779,3 +779,62 @@ p {
   }
 
 }
+
+/*mobile*/
+@media screen and (max-width: 767px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .header {
+    margin-bottom: 40px;
+  }
+
+  .enjoy {
+    padding: 60px 16px;
+  }
+
+  h1 {
+    font-size: 42px;
+    line-height: 115%;
+  }
+
+  h2 {
+    font-size: 32px;
+  }
+
+  .slider__buttons {
+    display: none;
+  }
+
+  .slider__img {
+    width: 348px;
+  }
+
+  .about__title {
+    font-size: 32px;
+  }
+
+  .about {
+    margin-bottom: 100px;
+  }
+
+  .app__links {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .app__info {
+    margin-bottom: 40px;
+  }
+
+  .app__img {
+    width: 100%;
+  }
+
+  .footer {
+    width: calc(100% - 31px);
+    padding: 60px 16px;
+    gap: 10px;
+  }
+}
