@@ -749,6 +749,11 @@ p {
     flex-direction: column;
   }
 
+  .gallery__item img {
+    transform: scale(1.05);
+    scale: unset;
+  }
+
   .gallery__item:not(.gallery__item.gallery__item--big) {
     display: none;
   }
@@ -817,6 +822,10 @@ p {
 
   .about {
     margin-bottom: 100px;
+  }
+
+  .gallery__item img {
+    transform: scale(1.25);
   }
 
   .app__links {
