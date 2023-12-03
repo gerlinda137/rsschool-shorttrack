@@ -80,23 +80,31 @@
                     fill="#403F3D" />
             </svg>
         </a>
-        <nav class="nav">
-            <ul class="nav-list">
-                <li class="nav-list__item">
-                    <a href="index.html#favourite" class="nav-list__link">Favorite coffee</a>
-                </li>
-                <li class="nav-list__item">
-                    <a href="index.html#about" class="nav-list__link">About</a>
-                </li>
-                <li class="nav-list__item">
-                    <a href="index.html#app" class="nav-list__link">Mobile app</a>
-                </li>
-                <li class="nav-list__item">
-                    <a href="#contact" class="nav-list__link">Contact us</a>
-                </li>
-            </ul>
-        </nav>
-        <a href="#" class="header__menu-link header__menu-link--active">Menu</a>
+        <div class="header__inner">
+            <button class="burger" type="button">
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav__wrapper">
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li class="nav-list__item">
+                            <a href="#favourite" class="nav-list__link">Favorite coffee</a>
+                        </li>
+                        <li class="nav-list__item">
+                            <a href="#about" class="nav-list__link">About</a>
+                        </li>
+                        <li class="nav-list__item">
+                            <a href="#app" class="nav-list__link">Mobile app</a>
+                        </li>
+                        <li class="nav-list__item">
+                            <a href="#contact" class="nav-list__link">Contact us</a>
+                        </li>
+                    </ul>
+                </nav>
+                <a href="menu.html" class="header__menu-link header__menu-link--active">Menu</a>
+            </div>
+        </div>
     </header>
     <main class="main container">
         <section class="menu">
@@ -225,6 +233,17 @@
                             </div>
                         </li>
                     </ul>
+                    <button class="cards__btn" type="button">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g id="refresh">
+                                <path id="Ellipse"
+                                    d="M21.8883 13.5C21.1645 18.3113 17.013 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C16.1006 2 19.6248 4.46819 21.1679 8"
+                                    stroke="#403F3D" stroke-linecap="round" stroke-linejoin="round" />
+                                <path id="Ellipse_2" d="M17 8H21.4C21.7314 8 22 7.73137 22 7.4V3" stroke="#403F3D"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </g>
+                        </svg>
+                    </button>
                 </div>
             </section>
         </section>
@@ -293,6 +312,7 @@
             </ul>
         </section>
     </footer>
+    <script src="script.js"></script>
 </body>
 
 </html>
