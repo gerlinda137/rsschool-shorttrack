@@ -1015,4 +1015,16 @@ p {
     padding-bottom: 63px;
     gap: 10px;
   }
+
+  .menu__title {
+    font-size: 32px;
+  }
+
+  .tabs__btns {
+    gap: 8px;
+  }
+
+  .cards {
+    gap: 38px;
+  }
 }
