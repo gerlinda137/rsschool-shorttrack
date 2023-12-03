@@ -72,6 +72,7 @@ ul {
 button {
   background-color: transparent;
   border: none;
+  cursor: pointer;
 }
 
 p {
@@ -99,7 +100,48 @@ p {
   margin-bottom: 20px;
 }
 
+.header__inner {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .header__logo-link {
+  display: flex;
+}
+
+.burger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 100%;
+  border: 1px solid var(--border-dark);
+  gap: 7px;
+  display: none;
+}
+
+.burger span {
+  width: 16px;
+  height: 2px;
+  background-color: var(--txt);
+  border-radius: 25px;
+  transition: all 0.3s ease-in-out;
+}
+
+.burger.cross span:first-child {
+  transform: rotate(45deg) translate(3px, 3px);
+  transition: all 0.3s ease-in-out;
+}
+
+.burger.cross span:last-child {
+  transform: rotate(-45deg) translate(3px, -3px);
+  transition: all 0.3s ease-in-out;
+}
+
+.nav {
   display: flex;
 }
 
@@ -107,6 +149,11 @@ p {
   display: flex;
   align-items: center;
   gap: 40px;
+  width: 100%;
+}
+
+.nav-list__item.nav-list__item--menu {
+  margin-left: auto;
 }
 
 .nav-list__link {
@@ -736,6 +783,73 @@ p {
 /*tablet*/
 
 @media screen and (max-width: 1024px) {
+
+  .burger {
+    display: flex;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .header__inner {
+    justify-content: end;
+  }
+
+  .header__menu-link {
+    display: none;
+  }
+
+  .nav__wrapper.open .nav {
+    margin-bottom: 92px;
+  }
+
+  .nav__wrapper.open .header__menu-link {
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    margin: 0;
+    font-size: 32px;
+    padding-right: 55px;
+    display: block;
+  }
+
+  .nav__wrapper.open .header__menu-link::after {
+    width: 40px;
+    height: 40px;
+    top: 3px;
+  }
+
+  .nav__wrapper.open .nav-list {
+    gap: 52px;
+    flex-direction: column;
+  }
+
+  .nav__wrapper.open .nav-list__link {
+    font-size: 32px;
+  }
+
+
+
+  .nav__wrapper.open {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--body);
+    width: 100%;
+    top: 97px;
+    left: 0;
+    align-items: center;
+    height: 100%;
+    padding: 60px 40px;
+    z-index: 100;
+  }
+
+  .nav__wrapper.open .nav {
+    display: flex;
+  }
+
+  /**/
 
   .enjoy {
     padding: 100px 60px;
