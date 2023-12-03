@@ -32,6 +32,10 @@ body {
   padding-bottom: 40px;
 }
 
+body.no-scroll {
+  overflow: hidden;
+}
+
 h1,
 h2,
 h3,
@@ -100,6 +104,14 @@ p {
   margin-bottom: 20px;
 }
 
+.header.header--on-scroll {
+  background-color: var(--body);
+  transition: all 0.3s;
+  position: fixed;
+  left: 0;
+  top: 0;
+}
+
 .header__inner {
   width: 100%;
   display: flex;
@@ -143,6 +155,12 @@ p {
 
 .nav {
   display: flex;
+  margin-left: auto;
+}
+
+.nav__wrapper {
+  display: flex;
+  width: 100%;
 }
 
 .nav-list {
@@ -169,6 +187,7 @@ p {
   padding-right: 28px;
   border-bottom: transparent solid 2px;
   transition: all 0.3s;
+  margin-left: auto;
 }
 
 .header__menu-link::after {
@@ -800,8 +819,14 @@ p {
     display: none;
   }
 
+  .nav__wrapper {
+    width: auto;
+  }
+
   .nav__wrapper.open .nav {
     margin-bottom: 92px;
+    display: flex;
+    margin-left: 0;
   }
 
   .nav__wrapper.open .header__menu-link {
@@ -845,11 +870,6 @@ p {
     z-index: 100;
   }
 
-  .nav__wrapper.open .nav {
-    display: flex;
-  }
-
-  /**/
 
   .enjoy {
     padding: 100px 60px;
@@ -906,7 +926,8 @@ p {
   }
 
   .header {
-    margin-bottom: 40px;
+    margin-bottom: 20px;
+    padding-top: 20px;
   }
 
   .enjoy {
@@ -958,6 +979,7 @@ p {
   .footer {
     width: calc(100% - 31px);
     padding: 60px 16px;
+    padding-bottom: 63px;
     gap: 10px;
   }
 }
