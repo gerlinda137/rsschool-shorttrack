@@ -692,6 +692,7 @@ p {
   line-height: 150%;
   transition: all 0.3s;
   cursor: pointer;
+  color: var(--txt);
 }
 
 /* .tabs__button:hover {
