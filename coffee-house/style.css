@@ -208,11 +208,11 @@ p {
   pointer-events: none;
 }
 
-.nav-list__link:hover,
+/* .nav-list__link:hover,
 .header__menu-link:hover {
   border-bottom: var(--txt) solid 2px;
   transition: all 0.3s;
-}
+} */
 
 .enjoy {
   display: flex;
@@ -267,16 +267,16 @@ p {
   transition: all 0.3s;
 }
 
-.enjoy__link:hover {
+/* .enjoy__link:hover {
   padding-left: 62px;
   transition: all 0.3s;
-}
+} */
 
-.enjoy__link:hover.enjoy__link::after {
+/* .enjoy__link:hover.enjoy__link::after {
   opacity: 1;
   transform: translate(-15px, -50%);
   transition: all 0.3s;
-}
+} */
 
 /*favourite coffee*/
 .favourite-coffee {
@@ -322,7 +322,7 @@ p {
   transition: all 0.3s;
 }
 
-.slider__button:hover {
+/* .slider__button:hover {
   background-color: var(--container);
   transition: all 0.3s;
 }
@@ -330,7 +330,7 @@ p {
 .slider__button:hover svg path {
   stroke: var(--txt-light);
   transition: all 0.3s;
-}
+} */
 
 .slider__content {
   display: flex;
@@ -410,10 +410,10 @@ p {
   display: flex;
 }
 
-.gallery__item:hover img {
+/* .gallery__item:hover img {
   scale: 1;
   transition: all 0.3s;
-}
+} */
 
 .gallery__item.gallery__item--big {
   height: 590px;
@@ -471,7 +471,7 @@ p {
   transition: all 0.3s;
 }
 
-.app__link:hover {
+/* .app__link:hover {
   background-color: var(--backdrop);
   color: var(--txt-light);
   transition: all 0.3s;
@@ -480,7 +480,7 @@ p {
 .app__link:hover svg path {
   fill: var(--txt-light);
   transition: all 0.3s;
-}
+} */
 
 .app__link-icon {
   margin-right: 8px;
@@ -511,6 +511,7 @@ p {
   display: flex;
   gap: 50px;
   max-width: 1360px;
+  width: calc(100% - 80px);
   padding: 100px;
   color: var(--txt-light);
 }
@@ -553,7 +554,7 @@ p {
   transition: all 0.3s;
 }
 
-.socials__link:hover {
+/* .socials__link:hover {
   background-color: var(--body);
   transition: all 0.3s;
 }
@@ -561,7 +562,7 @@ p {
 .socials__link:hover svg path {
   stroke: var(--txt);
   transition: all 0.3s;
-}
+} */
 
 .contact-us {
   display: flex;
@@ -604,15 +605,14 @@ p {
   pointer-events: none;
 }
 
-.contact-list__link:hover {
-  /* border-bottom: var(--txt-light) 2px solid; */
+/* .contact-list__link:hover {
   transition: all 0.3s;
 }
 
 .contact-list__link:hover.contact-list__link::before {
   opacity: 100%;
   transition: all 0.3s;
-}
+} */
 
 .contact-list__link.contact-list__link--tel::after {
   content: '';
@@ -694,7 +694,7 @@ p {
   cursor: pointer;
 }
 
-.tabs__button:hover {
+/* .tabs__button:hover {
   transition: all 0.3s;
   background-color: var(--container);
   color: var(--txt-light);
@@ -703,7 +703,7 @@ p {
 .tabs__button:hover .tabs__button-icon {
   background-color: var(--body);
   transition: all 0.3s;
-}
+} */
 
 .tabs__button.tabs__button--active {
   background-color: var(--container);
@@ -750,10 +750,10 @@ p {
   cursor: pointer;
 }
 
-.card:hover .card__img {
+/* .card:hover .card__img {
   transition: all 0.3s;
   scale: 1;
-}
+} */
 
 .card__img-wrapper {
   overflow: hidden;
@@ -880,6 +880,15 @@ p {
     padding: 100px 60px;
   }
 
+  .enjoy__link {
+    padding-left: 62px;
+  }
+
+  .enjoy__link::after {
+    opacity: 1;
+    right: 64px;
+  }
+
   .favourite-coffee__title {
     text-align: center;
   }
@@ -938,13 +947,13 @@ p {
     flex-shrink: 0;
   }
 
-  .cards__btn:hover {
+  /* .cards__btn:hover {
     background-color: var(--container);
   }
 
   .cards__btn:hover svg path {
     stroke: var(--txt-light);
-  }
+  } */
 
   .cards__item:nth-child(n+5) {
     display: none;
@@ -1026,5 +1035,94 @@ p {
 
   .cards {
     gap: 38px;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+
+  .nav-list__link:hover,
+  .header__menu-link:hover {
+    border-bottom: var(--txt) solid 2px;
+    transition: all 0.3s;
+  }
+
+  .enjoy__link:hover {
+    padding-left: 62px;
+    transition: all 0.3s;
+  }
+
+  .enjoy__link:hover.enjoy__link::after {
+    opacity: 1;
+    transform: translate(-15px, -50%);
+    transition: all 0.3s;
+  }
+
+  .slider__button:hover {
+    background-color: var(--container);
+    transition: all 0.3s;
+  }
+
+  .slider__button:hover svg path {
+    stroke: var(--txt-light);
+    transition: all 0.3s;
+  }
+
+  .gallery__item:hover img {
+    scale: 1;
+    transition: all 0.3s;
+  }
+
+  .app__link:hover {
+    background-color: var(--backdrop);
+    color: var(--txt-light);
+    transition: all 0.3s;
+  }
+
+  .app__link:hover svg path {
+    fill: var(--txt-light);
+    transition: all 0.3s;
+  }
+
+  .socials__link:hover {
+    background-color: var(--body);
+    transition: all 0.3s;
+  }
+
+  .socials__link:hover svg path {
+    stroke: var(--txt);
+    transition: all 0.3s;
+  }
+
+  .contact-list__link:hover {
+    transition: all 0.3s;
+  }
+
+  .contact-list__link:hover.contact-list__link::before {
+    opacity: 100%;
+    transition: all 0.3s;
+  }
+
+  .tabs__button:hover {
+    transition: all 0.3s;
+    background-color: var(--container);
+    color: var(--txt-light);
+  }
+
+  .tabs__button:hover .tabs__button-icon {
+    background-color: var(--body);
+    transition: all 0.3s;
+  }
+
+  .card:hover .card__img {
+    transition: all 0.3s;
+    scale: 1;
+  }
+
+  .cards__btn:hover {
+    background-color: var(--container);
+  }
+
+  .cards__btn:hover svg path {
+    stroke: var(--txt-light);
   }
 }
