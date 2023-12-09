@@ -205,7 +205,6 @@ p {
 .header__menu-link.header__menu-link--active {
   border-bottom: var(--txt) solid 2px;
   transition: all 0.3s;
-  pointer-events: none;
 }
 
 /* .nav-list__link:hover,
@@ -891,6 +890,11 @@ p {
 @media screen and (max-width: 768px) {
   .burger {
     display: flex;
+    z-index: 1000;
+  }
+
+  .header__logo-link {
+    z-index: 1000;
   }
 
   .header__inner {
@@ -915,6 +919,9 @@ p {
     z-index: 100;
     transform: translateX(100%);
     transition: transform 0.3s;
+    top: 0;
+    padding-top: calc(60px + 97px);
+
   }
 
   .nav__wrapper.open {
