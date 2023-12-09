@@ -207,12 +207,6 @@ p {
   transition: all 0.3s;
 }
 
-/* .nav-list__link:hover,
-.header__menu-link:hover {
-  border-bottom: var(--txt) solid 2px;
-  transition: all 0.3s;
-} */
-
 .enjoy {
   display: flex;
   padding: 100px;
@@ -224,6 +218,7 @@ p {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  position: relative;
 }
 
 .enjoy__inner {
@@ -231,6 +226,21 @@ p {
   flex-direction: column;
   max-width: 530px;
   width: 100%;
+  z-index: 10;
+}
+
+.enjoy__video {
+  -o-object-fit: cover;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 40px;
+  max-width: 1360px;
+  width: 100%;
+  -o-object-position: center;
+     object-position: center;
+  height: 100%;
 }
 
 .enjoy__title {
