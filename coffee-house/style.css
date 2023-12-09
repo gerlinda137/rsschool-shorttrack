@@ -239,7 +239,7 @@ p {
   max-width: 1360px;
   width: 100%;
   -o-object-position: center;
-     object-position: center;
+  object-position: center;
   height: 100%;
 }
 
@@ -891,8 +891,16 @@ p {
     flex-shrink: 0;
   }
 
+  .cards__btn.hidden {
+    display: none;
+  }
+
   .cards__item:nth-child(n+5) {
     display: none;
+  }
+
+  .card.cards__item.show-all {
+    display: flex;
   }
 
 }

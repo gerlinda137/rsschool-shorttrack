@@ -1,3 +1,9 @@
+let jsonData = [];
+const cardsList = document.querySelector(".cards");
+const template = document.getElementById("card-template");
+const moreCardsBtn = document.querySelector(".cards__btn");
+const tabs = document.querySelectorAll(".tabs__button");
+
 fetch("product.json")
   .then((response) => response.json())
   .then(function (data) {
@@ -6,13 +12,11 @@ fetch("product.json")
   })
   .catch((error) => console.error("Error:", error));
 
-let jsonData = [];
-const cardsList = document.querySelector(".cards");
-const template = document.getElementById("card-template");
-
 function processData(category = "coffee") {
   console.log(jsonData);
   const products = [];
+
+  moreCardsBtn.classList.remove("hidden");
 
   for (const iterator of jsonData) {
     if (iterator.category == category) {
@@ -29,13 +33,13 @@ function processData(category = "coffee") {
     clone.querySelector(".card__price").textContent = `$${product.price}`;
     clone.querySelector(".card__img").src = `img/cards/${product.name}.jpg`;
     clone.querySelector(".card__img").alt = `${product.name} image`;
-
     cardsList.appendChild(clone);
   }
-}
 
-const tabs = document.querySelectorAll(".tabs__button");
-console.log(tabs);
+  if (products.length <= 4) {
+    moreCardsBtn.classList.add("hidden");
+  }
+}
 
 for (const tab of tabs) {
   tab.addEventListener("click", () => {
@@ -52,3 +56,12 @@ for (const tab of tabs) {
     processData(tabCategory);
   });
 }
+
+moreCardsBtn.onclick = () => {
+  const cards = document.querySelectorAll(".card");
+
+  for (const card of cards) {
+    card.classList.add("show-all");
+  }
+  moreCardsBtn.classList.add("hidden");
+};
