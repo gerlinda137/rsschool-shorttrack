@@ -811,72 +811,6 @@ p {
 
 @media screen and (max-width: 1024px) {
 
-  .burger {
-    display: flex;
-  }
-
-  .nav {
-    display: none;
-  }
-
-  .header__inner {
-    justify-content: end;
-  }
-
-  .header__menu-link {
-    display: none;
-  }
-
-  .nav__wrapper {
-    width: auto;
-  }
-
-  .nav__wrapper.open .nav {
-    margin-bottom: 92px;
-    display: flex;
-    margin-left: 0;
-  }
-
-  .nav__wrapper.open .header__menu-link {
-    width: -webkit-fit-content;
-    width: -moz-fit-content;
-    width: fit-content;
-    margin: 0;
-    font-size: 32px;
-    padding-right: 55px;
-    display: block;
-  }
-
-  .nav__wrapper.open .header__menu-link::after {
-    width: 40px;
-    height: 40px;
-    top: 3px;
-  }
-
-  .nav__wrapper.open .nav-list {
-    gap: 52px;
-    flex-direction: column;
-  }
-
-  .nav__wrapper.open .nav-list__link {
-    font-size: 32px;
-  }
-
-  .nav__wrapper.open {
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    background-color: var(--body);
-    width: 100%;
-    top: 97px;
-    left: 0;
-    align-items: center;
-    height: 100%;
-    padding: 60px 40px;
-    z-index: 100;
-  }
-
-
   .enjoy {
     padding: 100px 60px;
   }
@@ -948,16 +882,76 @@ p {
     flex-shrink: 0;
   }
 
-  /* .cards__btn:hover {
-    background-color: var(--container);
-  }
-
-  .cards__btn:hover svg path {
-    stroke: var(--txt-light);
-  } */
-
   .cards__item:nth-child(n+5) {
     display: none;
+  }
+
+}
+
+@media screen and (max-width: 768px) {
+  .burger {
+    display: flex;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .header__inner {
+    justify-content: end;
+  }
+
+  .header__menu-link {
+    display: none;
+  }
+
+  .nav__wrapper {
+    width: auto;
+  }
+
+  .nav__wrapper.open .nav {
+    margin-bottom: 92px;
+    display: flex;
+    margin-left: 0;
+  }
+
+  .nav__wrapper.open .header__menu-link {
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    margin: 0;
+    font-size: 32px;
+    padding-right: 55px;
+    display: block;
+  }
+
+  .nav__wrapper.open .header__menu-link::after {
+    width: 40px;
+    height: 40px;
+    top: 3px;
+  }
+
+  .nav__wrapper.open .nav-list {
+    gap: 52px;
+    flex-direction: column;
+  }
+
+  .nav__wrapper.open .nav-list__link {
+    font-size: 32px;
+  }
+
+  .nav__wrapper.open {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--body);
+    width: 100%;
+    top: 97px;
+    left: 0;
+    align-items: center;
+    height: 100%;
+    padding: 60px 40px;
+    z-index: 100;
   }
 
 }
