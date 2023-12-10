@@ -3,6 +3,7 @@ const cardsList = document.querySelector(".cards");
 const template = document.getElementById("card-template");
 const moreCardsBtn = document.querySelector(".cards__btn");
 const tabs = document.querySelectorAll(".tabs__button");
+const root = document.querySelector("body");
 
 fetch("product.json")
   .then((response) => response.json())
@@ -33,6 +34,9 @@ function processData(category = "coffee") {
     clone.querySelector(".card__price").textContent = `$${product.price}`;
     clone.querySelector(".card__img").src = `img/cards/${product.name}.jpg`;
     clone.querySelector(".card__img").alt = `${product.name} image`;
+    clone
+      .querySelector(".card")
+      .addEventListener("click", () => generatePopup(product));
     cardsList.appendChild(clone);
   }
 
@@ -65,3 +69,37 @@ moreCardsBtn.onclick = () => {
   }
   moreCardsBtn.classList.add("hidden");
 };
+
+//popup
+const popUpTemplate = document.querySelector(".popup-template");
+
+function generatePopup(cardData) {
+  const popupClone = popUpTemplate.content.cloneNode(true);
+  popupClone.querySelector(".popup__title").textContent = cardData.name;
+  popupClone.querySelector(".popup__description").textContent =
+    cardData.description;
+  popupClone.querySelector(".total__price").textContent = `$${cardData.price}`;
+  popupClone.querySelector(
+    ".popup__img img"
+  ).src = `img/cards/${cardData.name}.jpg`;
+  popupClone.querySelector(".popup__img img").alt = `${cardData.name} image`;
+
+  root.classList.add("no-scroll");
+  root.appendChild(popupClone);
+
+  const popupAppended = document.querySelector(".popup");
+  const popupInner = popupAppended.querySelector(".popup__inner");
+  popupAppended.querySelector(".popup__close").addEventListener("click", () => {
+    popupAppended.remove();
+    root.classList.remove("no-scroll");
+  });
+  document.addEventListener("click", (e) => {
+    if (popupAppended && e.target !== popupInner && e.target == popupAppended) {
+      popupAppended.remove();
+    }
+  });
+}
+
+//popup math
+
+function culcPrice(cardData) {}
