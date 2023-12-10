@@ -84,6 +84,28 @@ function generatePopup(cardData) {
   ).src = `img/cards/${cardData.name}.jpg`;
   popupClone.querySelector(".popup__img img").alt = `${cardData.name} image`;
 
+  const btnsSizeContainer = popupClone.querySelector(".popup__btns--size");
+  const btnsSize = btnsSizeContainer.querySelectorAll(".checkbox");
+
+  for (let i = 0; i < btnsSize.length; i++) {
+    const button = btnsSize[i];
+    const buttonLabel = button.querySelector(".checkbox__label");
+    const buttonInput = button.querySelector("input");
+    const inputId = buttonInput.id;
+    buttonLabel.textContent = cardData.sizes[inputId]["size"];
+  }
+
+  const btnsAddContainer = popupClone.querySelector(".popup__btns--additives");
+  const btnsAdd = btnsAddContainer.querySelectorAll(".checkbox");
+
+  for (let i = 0; i < btnsAdd.length; i++) {
+    const button = btnsAdd[i];
+    const buttonLabel = button.querySelector(".checkbox__label");
+    const buttonInput = button.querySelector("input");
+    const inputId = buttonInput.id;
+    buttonLabel.textContent = cardData.additives[inputId]["name"];
+  }
+
   root.classList.add("no-scroll");
   root.appendChild(popupClone);
 
@@ -118,7 +140,6 @@ function calcPrice(cardData) {
         maximumFractionDigits: 2,
         minimumFractionDigits: 2,
       });
-      roundedPrice = +roundedPrice;
       document.querySelector(".total__price").textContent = `$${roundedPrice}`;
     });
   }
