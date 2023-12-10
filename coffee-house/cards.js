@@ -96,10 +96,55 @@ function generatePopup(cardData) {
   document.addEventListener("click", (e) => {
     if (popupAppended && e.target !== popupInner && e.target == popupAppended) {
       popupAppended.remove();
+      root.classList.remove("no-scroll");
     }
   });
+
+  calcPrice(cardData);
 }
 
 //popup math
 
-function culcPrice(cardData) {}
+function calcPrice(cardData) {
+  let price = +cardData.price;
+  const checkboxes = document.querySelectorAll(".checkbox input");
+
+  for (const checkbox of checkboxes) {
+    checkbox.addEventListener("change", () => {
+      price = +cardData.price;
+      checkSize();
+      checkAdds();
+      let roundedPrice = price.toLocaleString("en-US", {
+        maximumFractionDigits: 2,
+        minimumFractionDigits: 2,
+      });
+      roundedPrice = +roundedPrice;
+      document.querySelector(".total__price").textContent = `$${roundedPrice}`;
+    });
+  }
+
+  const sizeList = document.querySelector(".popup__btns--size");
+  const sizes = sizeList.querySelectorAll("input");
+
+  const addList = document.querySelector(".popup__btns--additives");
+  const adds = addList.querySelectorAll("input");
+
+  function checkSize() {
+    for (const size of sizes) {
+      if (size.checked == true) {
+        const sizeValue = size.id;
+
+        price += Number(cardData.sizes[sizeValue]["add-price"]);
+      }
+    }
+  }
+
+  function checkAdds() {
+    for (const add of adds) {
+      if (add.checked == true) {
+        const addValue = add.id;
+        price += Number(cardData.additives[addValue]["add-price"]);
+      }
+    }
+  }
+}

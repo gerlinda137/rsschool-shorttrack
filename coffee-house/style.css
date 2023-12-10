@@ -107,7 +107,7 @@ p {
 
 .header.header--on-scroll {
   background-color: var(--body);
-  transition: all 0.3s;
+  transition: all 0.7s;
   position: fixed;
   left: 0;
   top: 0;
@@ -141,17 +141,17 @@ p {
   height: 2px;
   background-color: var(--txt);
   border-radius: 25px;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.7s ease-in-out;
 }
 
 .burger.cross span:first-child {
   transform: rotate(45deg) translate(3px, 3px);
-  transition: all 0.3s ease-in-out;
+  transition: all 0.7s ease-in-out;
 }
 
 .burger.cross span:last-child {
   transform: rotate(-45deg) translate(3px, -3px);
-  transition: all 0.3s ease-in-out;
+  transition: all 0.7s ease-in-out;
 }
 
 .nav {
@@ -187,7 +187,7 @@ p {
   position: relative;
   padding-right: 28px;
   border-bottom: transparent solid 2px;
-  transition: all 0.3s;
+  transition: all 0.7s;
   margin-left: auto;
 }
 
@@ -205,7 +205,7 @@ p {
 
 .header__menu-link.header__menu-link--active {
   border-bottom: var(--txt) solid 2px;
-  transition: all 0.3s;
+  transition: all 0.7s;
 }
 
 .enjoy {
@@ -261,7 +261,7 @@ p {
   max-width: 200px;
   width: 100%;
   position: relative;
-  transition: all 0.3s;
+  transition: all 0.7s;
 }
 
 .enjoy__link::after {
@@ -274,18 +274,18 @@ p {
   transform: translate(0, -50%);
   right: 50px;
   opacity: 0;
-  transition: all 0.3s;
+  transition: all 0.7s;
 }
 
 /* .enjoy__link:hover {
   padding-left: 62px;
-  transition: all 0.3s;
+  transition: all 0.7s;
 } */
 
 /* .enjoy__link:hover.enjoy__link::after {
   opacity: 1;
   transform: translate(-15px, -50%);
-  transition: all 0.3s;
+  transition: all 0.7s;
 } */
 
 /*favourite coffee*/
@@ -329,17 +329,17 @@ p {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.3s;
+  transition: all 0.7s;
 }
 
 /* .slider__button:hover {
   background-color: var(--container);
-  transition: all 0.3s;
+  transition: all 0.7s;
 }
 
 .slider__button:hover svg path {
   stroke: var(--txt-light);
-  transition: all 0.3s;
+  transition: all 0.7s;
 } */
 
 .slider__content {
@@ -422,7 +422,7 @@ p {
 
 /* .gallery__item:hover img {
   scale: 1;
-  transition: all 0.3s;
+  transition: all 0.7s;
 } */
 
 .gallery__item.gallery__item--big {
@@ -438,7 +438,7 @@ p {
   height: 100%;
   border-radius: 20px;
   scale: 1.1;
-  transition: all 0.3s;
+  transition: all 0.7s;
 }
 
 /*app*/
@@ -478,18 +478,18 @@ p {
   border: 1px solid var(--border-dark, #665F55);
   max-width: 200px;
   width: 100%;
-  transition: all 0.3s;
+  transition: all 0.7s;
 }
 
 /* .app__link:hover {
   background-color: var(--backdrop);
   color: var(--txt-light);
-  transition: all 0.3s;
+  transition: all 0.7s;
 }
 
 .app__link:hover svg path {
   fill: var(--txt-light);
-  transition: all 0.3s;
+  transition: all 0.7s;
 } */
 
 .app__link-icon {
@@ -561,17 +561,17 @@ p {
   justify-content: center;
   border-radius: 100%;
   border: 1px solid var(--txt-light);
-  transition: all 0.3s;
+  transition: all 0.7s;
 }
 
 /* .socials__link:hover {
   background-color: var(--body);
-  transition: all 0.3s;
+  transition: all 0.7s;
 }
 
 .socials__link:hover svg path {
   stroke: var(--txt);
-  transition: all 0.3s;
+  transition: all 0.7s;
 } */
 
 .contact-us {
@@ -595,7 +595,7 @@ p {
   position: relative;
   font-weight: 600;
   border-bottom: 2px solid transparent;
-  transition: all 0.3s;
+  transition: all 0.7s;
   position: relative;
 }
 
@@ -608,7 +608,7 @@ p {
   left: 5px;
   opacity: 0;
   top: 24px;
-  transition: all 0.3s;
+  transition: all 0.7s;
 }
 
 .contact-list__link.contact-list__link--hours {
@@ -616,12 +616,12 @@ p {
 }
 
 /* .contact-list__link:hover {
-  transition: all 0.3s;
+  transition: all 0.7s;
 }
 
 .contact-list__link:hover.contact-list__link::before {
   opacity: 100%;
-  transition: all 0.3s;
+  transition: all 0.7s;
 } */
 
 .contact-list__link.contact-list__link--tel::after {
@@ -700,20 +700,20 @@ p {
   font-size: 16px;
   font-weight: 600;
   line-height: 150%;
-  transition: all 0.3s;
+  transition: all 0.7s;
   cursor: pointer;
   color: var(--txt);
 }
 
 /* .tabs__button:hover {
-  transition: all 0.3s;
+  transition: all 0.7s;
   background-color: var(--container);
   color: var(--txt-light);
 }
 
 .tabs__button:hover .tabs__button-icon {
   background-color: var(--body);
-  transition: all 0.3s;
+  transition: all 0.7s;
 } */
 
 .tabs__button.tabs__button--active {
@@ -762,7 +762,7 @@ p {
 }
 
 /* .card:hover .card__img {
-  transition: all 0.3s;
+  transition: all 0.7s;
   scale: 1;
 } */
 
@@ -779,7 +779,7 @@ p {
 
 
 .card__img {
-  transition: all 0.3s;
+  transition: all 0.7s;
   -o-object-fit: cover;
   object-fit: cover;
   -o-object-position: center;
@@ -888,6 +888,7 @@ p {
 .popup__btns {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 8px;
 }
 
@@ -900,6 +901,7 @@ p {
   background-color: var(--body);
   cursor: pointer;
   font-weight: 600;
+  transition: all 0.7s;
 }
 
 .visually-hidden {
@@ -920,6 +922,7 @@ p {
   justify-content: center;
   background-color: var(--border-light);
   margin-right: 8px;
+  transition: all 0.7s;
 }
 
 .checkbox:has(input:checked) {
@@ -982,6 +985,7 @@ p {
   font-weight: 600;
   line-height: 150%;
   color: var(--txt);
+  transition: all 0.7s;
 }
 
 /*tablet*/
@@ -1055,7 +1059,7 @@ p {
     justify-content: center;
     border-radius: 100%;
     border: 1px solid var(--border-dark);
-    transition: all 0.3s;
+    transition: all 0.7s;
     flex-shrink: 0;
   }
 
@@ -1069,6 +1073,10 @@ p {
 
   .card.cards__item.show-all {
     display: flex;
+  }
+
+  .popup__inner {
+    width: calc(100% - 80px);
   }
 
 }
@@ -1104,7 +1112,7 @@ p {
     padding: 60px 40px;
     z-index: 100;
     transform: translateX(100%);
-    transition: transform 0.3s;
+    transition: transform 0.7s;
     top: 0;
     padding-top: calc(60px + 97px);
 
@@ -1112,7 +1120,7 @@ p {
 
   .nav__wrapper.open {
     transform: translateX(0);
-    transition: transform 0.3s;
+    transition: transform 0.7s;
   }
 
   .nav {
@@ -1223,6 +1231,10 @@ p {
   .cards {
     gap: 38px;
   }
+
+  .popup__img {
+    display: none;
+  }
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -1230,78 +1242,78 @@ p {
   .nav-list__link:hover,
   .header__menu-link:hover {
     border-bottom: var(--txt) solid 2px;
-    transition: all 0.3s;
+    transition: all 0.7s;
   }
 
   .enjoy__link:hover {
     padding-left: 62px;
-    transition: all 0.3s;
+    transition: all 0.7s;
   }
 
   .enjoy__link:hover.enjoy__link::after {
     opacity: 1;
     transform: translate(-15px, -50%);
-    transition: all 0.3s;
+    transition: all 0.7s;
   }
 
   .slider__button:hover {
     background-color: var(--container);
-    transition: all 0.3s;
+    transition: all 0.7s;
   }
 
   .slider__button:hover svg path {
     stroke: var(--txt-light);
-    transition: all 0.3s;
+    transition: all 0.7s;
   }
 
   .gallery__item:hover img {
     scale: 1;
-    transition: all 0.3s;
+    transition: all 0.7s;
   }
 
   .app__link:hover {
     background-color: var(--backdrop);
     color: var(--txt-light);
-    transition: all 0.3s;
+    transition: all 0.7s;
   }
 
   .app__link:hover svg path {
     fill: var(--txt-light);
-    transition: all 0.3s;
+    transition: all 0.7s;
   }
 
   .socials__link:hover {
     background-color: var(--body);
-    transition: all 0.3s;
+    transition: all 0.7s;
   }
 
   .socials__link:hover svg path {
     stroke: var(--txt);
-    transition: all 0.3s;
+    transition: all 0.7s;
   }
 
   .contact-list__link:hover {
-    transition: all 0.3s;
+    transition: all 0.7s;
   }
 
   .contact-list__link:hover.contact-list__link::before {
     opacity: 100%;
-    transition: all 0.3s;
+    transition: all 0.7s;
   }
 
   .tabs__button:hover {
-    transition: all 0.3s;
+    transition: all 0.7s;
     background-color: var(--container);
     color: var(--txt-light);
   }
 
   .tabs__button:hover .tabs__button-icon {
     background-color: var(--body);
-    transition: all 0.3s;
+    transition: all 0.7s;
   }
 
   .card:hover .card__img {
-    transition: all 0.3s;
+    transition: all 0.7s;
     scale: 1;
   }
 
@@ -1311,5 +1323,23 @@ p {
 
   .cards__btn:hover svg path {
     stroke: var(--txt-light);
+  }
+
+  .popup__close:hover {
+    transition: all 0.7s;
+    background-color: var(--container);
+    color: var(--txt-light);
+  }
+
+  .popup__btn-item .checkbox:hover {
+    transition: all 0.7s;
+    background-color: var(--container);
+    color: var(--txt-light);
+  }
+
+  .popup__btn-item .checkbox:hover .checkbox__custom-box {
+    background-color: var(--body);
+    transition: all 0.7s;
+    color: var(--txt);
   }
 }
