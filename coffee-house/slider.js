@@ -26,6 +26,7 @@ function switchToNextSlide() {
   paginationBtns[currentActiveSlide].classList.add(
     "slider__pagination-item--active"
   );
+  timerInterval = 5;
 }
 
 nextBtn.addEventListener("click", switchToNextSlide);
@@ -44,6 +45,7 @@ prevBtn.addEventListener("click", function name() {
   paginationBtns[currentActiveSlide].classList.add(
     "slider__pagination-item--active"
   );
+  timerInterval = 5;
 });
 
 function translateToCurActiveSlide() {
