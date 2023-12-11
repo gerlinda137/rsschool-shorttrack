@@ -8,6 +8,7 @@ const paginationBtns = slider.querySelectorAll(".slider__pagination-item");
 const cardWidth = card.offsetWidth;
 const paginationBtnFirst = document.querySelector(".slider__pagination-item");
 let currentActiveSlide = 0;
+let timerInterval = 5;
 
 paginationBtnFirst.classList.add("slider__pagination-item--active");
 
@@ -51,4 +52,27 @@ function translateToCurActiveSlide() {
   }px)`;
 }
 
-const sliderTimer = setInterval(switchToNextSlide, 5000);
+let remainingTime = 0;
+let cursorOnSlider = false;
+
+const sliderTimer = setInterval(() => {
+  if (!cursorOnSlider) {
+    if (timerInterval !== 0) {
+      timerInterval--;
+    } else {
+      switchToNextSlide();
+      timerInterval = 5;
+    }
+    console.log(timerInterval);
+  }
+}, 1000);
+
+visibleWindow.addEventListener("mouseover", () => {
+  cursorOnSlider = true;
+  console.log("hover");
+});
+
+visibleWindow.addEventListener("mouseleave", () => {
+  cursorOnSlider = false;
+  console.log("hover left");
+});
