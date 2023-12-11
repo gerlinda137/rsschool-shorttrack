@@ -6,10 +6,12 @@ const prevBtn = slider.querySelector("#prev-btn");
 const nextBtn = slider.querySelector("#next-btn");
 const paginationBtns = slider.querySelectorAll(".slider__pagination-item");
 const cardWidth = card.offsetWidth;
+const paginationBtnFirst = document.querySelector(".slider__pagination-item");
 let currentActiveSlide = 0;
-const animationTime = 7;
 
-nextBtn.addEventListener("click", function name() {
+paginationBtnFirst.classList.add("slider__pagination-item--active");
+
+function switchToNextSlide() {
   paginationBtns.forEach((element) => {
     element.classList.remove("slider__pagination-item--active");
   });
@@ -23,7 +25,9 @@ nextBtn.addEventListener("click", function name() {
   paginationBtns[currentActiveSlide].classList.add(
     "slider__pagination-item--active"
   );
-});
+}
+
+nextBtn.addEventListener("click", switchToNextSlide);
 
 prevBtn.addEventListener("click", function name() {
   paginationBtns.forEach((element) => {
@@ -47,4 +51,4 @@ function translateToCurActiveSlide() {
   }px)`;
 }
 
-function fillActivePagginationBtn() {}
+const sliderTimer = setInterval(switchToNextSlide, 5000);
