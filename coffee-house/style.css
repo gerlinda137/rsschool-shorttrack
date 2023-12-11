@@ -332,17 +332,24 @@ p {
   transition: all 0.7s;
 }
 
-/* .slider__button:hover {
-  background-color: var(--container);
-  transition: all 0.7s;
+.slider__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.slider__button:hover svg path {
-  stroke: var(--txt-light);
-  transition: all 0.7s;
-} */
+.slider-window {
+  max-width: 480px;
+  width: 100%;
+  overflow: hidden;
+}
 
-.slider__content {
+.slider-cards {
+  display: flex;
+  transition: 0.3s;
+}
+
+.slider-card {
   display: flex;
   flex-direction: column;
   align-items: center;
