@@ -31,7 +31,7 @@ function switchToNextSlide() {
 
 nextBtn.addEventListener("click", switchToNextSlide);
 
-prevBtn.addEventListener("click", function name() {
+function switchToPrevSlide() {
   paginationBtns.forEach((element) => {
     element.classList.remove("slider__pagination-item--active");
   });
@@ -46,7 +46,9 @@ prevBtn.addEventListener("click", function name() {
     "slider__pagination-item--active"
   );
   timerInterval = 5;
-});
+}
+
+prevBtn.addEventListener("click", switchToPrevSlide);
 
 function translateToCurActiveSlide() {
   cardsTrack.style.transform = `translateX(${
@@ -77,4 +79,28 @@ visibleWindow.addEventListener("mouseover", () => {
 visibleWindow.addEventListener("mouseleave", () => {
   cursorOnSlider = false;
   console.log("hover left");
+});
+
+//touch
+let touchstartX = 0;
+let touchendX = 0;
+
+function onSwipe() {
+  //right
+  if (touchendX > touchstartX) {
+    switchToPrevSlide();
+  }
+  //left
+  if (touchendX < touchstartX) {
+    switchToNextSlide();
+  }
+}
+
+slider.addEventListener("touchstart", (e) => {
+  touchstartX = e.changedTouches[0].screenX;
+});
+
+slider.addEventListener("touchend", (e) => {
+  touchendX = e.changedTouches[0].screenX;
+  onSwipe();
 });

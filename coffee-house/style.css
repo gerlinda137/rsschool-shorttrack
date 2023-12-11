@@ -1256,6 +1256,11 @@ p {
   .popup__img {
     display: none;
   }
+
+  .slider-card,
+  .slider-window {
+    max-width: 348px;
+  }
 }
 
 @media (hover: hover) and (pointer: fine) {
