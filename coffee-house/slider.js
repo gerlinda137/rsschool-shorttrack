@@ -4,36 +4,41 @@ const cardsTrack = slider.querySelector(".slider-cards");
 const card = slider.querySelector(".slider-card");
 const prevBtn = slider.querySelector("#prev-btn");
 const nextBtn = slider.querySelector("#next-btn");
-// let curPosition = 0;
+const paginationBtns = slider.querySelectorAll(".slider__pagination-item");
 const cardWidth = card.offsetWidth;
 let currentActiveSlide = 0;
+const animationTime = 7;
 
 nextBtn.addEventListener("click", function name() {
+  paginationBtns.forEach((element) => {
+    element.classList.remove("slider__pagination-item--active");
+  });
   if (currentActiveSlide >= 2) {
-    // cardsTrack.style.transform = `translateX(0px)`;
     currentActiveSlide = 0;
   } else {
     currentActiveSlide++;
-    // cardsTrack.style.transform = `translateX(${-(
-    //   currentActiveSlide * cardWidth
-    // )}px)`;
   }
   console.log(currentActiveSlide);
   translateToCurActiveSlide();
+  paginationBtns[currentActiveSlide].classList.add(
+    "slider__pagination-item--active"
+  );
 });
 
 prevBtn.addEventListener("click", function name() {
+  paginationBtns.forEach((element) => {
+    element.classList.remove("slider__pagination-item--active");
+  });
   if (currentActiveSlide <= 0) {
-    // cardsTrack.style.transform = `translateX(-960px)`;
     currentActiveSlide = 2;
   } else {
     currentActiveSlide--;
-    // cardsTrack.style.transform = `translateX(${
-    //   currentActiveSlide * cardWidth
-    // }px)`;
   }
   console.log(currentActiveSlide);
   translateToCurActiveSlide();
+  paginationBtns[currentActiveSlide].classList.add(
+    "slider__pagination-item--active"
+  );
 });
 
 function translateToCurActiveSlide() {
@@ -42,27 +47,4 @@ function translateToCurActiveSlide() {
   }px)`;
 }
 
-// nextBtn.addEventListener("click", function name() {
-//   curPosition -= cardWidth;
-//   if (currentActiveSlide >= 2) {
-//     cardsTrack.style.transform = `translateX(0px)`;
-//     currentActiveSlide = 0;
-//     curPosition = 0;
-//   } else {
-//     currentActiveSlide++;
-//     cardsTrack.style.transform = `translateX(${curPosition}px)`;
-//   }
-//   console.log(currentActiveSlide);
-// });
-
-// prevBtn.addEventListener("click", function name() {
-//   curPosition += cardWidth;
-//   if (currentActiveSlide <= 0) {
-//     cardsTrack.style.transform = `translateX(-960px)`;
-//     currentActiveSlide = 2;
-//   } else {
-//     currentActiveSlide--;
-//     cardsTrack.style.transform = `translateX(${curPosition}px)`;
-//   }
-//   console.log(currentActiveSlide);
-// });
+function fillActivePagginationBtn() {}
