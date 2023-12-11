@@ -14,7 +14,6 @@ fetch("product.json")
   .catch((error) => console.error("Error:", error));
 
 function processData(category = "coffee") {
-  console.log(jsonData);
   const products = [];
 
   moreCardsBtn.classList.remove("hidden");
@@ -24,8 +23,6 @@ function processData(category = "coffee") {
       products.push(iterator);
     }
   }
-
-  console.log(products);
 
   for (const product of products) {
     const clone = template.content.cloneNode(true);

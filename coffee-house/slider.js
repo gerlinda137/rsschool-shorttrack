@@ -5,7 +5,7 @@ const card = slider.querySelector(".slider-card");
 const prevBtn = slider.querySelector("#prev-btn");
 const nextBtn = slider.querySelector("#next-btn");
 const paginationBtns = slider.querySelectorAll(".slider__pagination-item");
-const cardWidth = card.offsetWidth;
+let cardWidth = card.offsetWidth;
 const paginationBtnFirst = document.querySelector(".slider__pagination-item");
 let currentActiveSlide = 0;
 let timerInterval = 5;
@@ -21,7 +21,6 @@ function switchToNextSlide() {
   } else {
     currentActiveSlide++;
   }
-  console.log(currentActiveSlide);
   translateToCurActiveSlide();
   paginationBtns[currentActiveSlide].classList.add(
     "slider__pagination-item--active"
@@ -40,7 +39,6 @@ function switchToPrevSlide() {
   } else {
     currentActiveSlide--;
   }
-  console.log(currentActiveSlide);
   translateToCurActiveSlide();
   paginationBtns[currentActiveSlide].classList.add(
     "slider__pagination-item--active"
@@ -67,18 +65,15 @@ const sliderTimer = setInterval(() => {
       switchToNextSlide();
       timerInterval = 5;
     }
-    console.log(timerInterval);
   }
 }, 1000);
 
 visibleWindow.addEventListener("mouseover", () => {
   cursorOnSlider = true;
-  console.log("hover");
 });
 
 visibleWindow.addEventListener("mouseleave", () => {
   cursorOnSlider = false;
-  console.log("hover left");
 });
 
 //touch
@@ -103,4 +98,14 @@ slider.addEventListener("touchstart", (e) => {
 slider.addEventListener("touchend", (e) => {
   touchendX = e.changedTouches[0].screenX;
   onSwipe();
+});
+
+window.addEventListener("resize", () => {
+  if (window.innerWidth < 767) {
+    visibleWindow.style.maxWidth = "348px";
+    cardWidth = card.offsetWidth;
+  } else {
+    visibleWindow.style.maxWidth = "480px";
+    cardWidth = card.offsetWidth;
+  }
 });
