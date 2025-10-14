@@ -34,9 +34,7 @@ nextBtn.addEventListener("click", switchToNextSlide);
 
 function switchToPrevSlide() {
   paginationBtns.forEach((element) => {
-    if (element.hasChildNodes) {
-      element.removeChild(element.firstChild);
-    }
+    element.innerHTML = "";
   });
   if (currentActiveSlide <= 0) {
     currentActiveSlide = 2;
