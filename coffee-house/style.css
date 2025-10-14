@@ -407,7 +407,7 @@ p {
   position: relative;
 }
 
-.slider__pagination-item::after {
+/* .slider__pagination-item::after {
   content: '';
   width: 0%;
   height: 4px;
@@ -417,11 +417,17 @@ p {
   left: 0;
   top: 0;
   transition: 0.3s width;
-}
+} */
 
-.slider__pagination-item.slider__pagination-item--active::after {
-  transition: 7s width;
-  width: 100%;
+.slider__pagination-item .slider__pagination-item--active {
+  position: absolute;
+  height: 4px;
+  background-color: var(--border-dark);
+  border-radius: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: 0.2s width;
 }
 
 /*about*/

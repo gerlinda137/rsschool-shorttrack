@@ -10,11 +10,13 @@ const paginationBtnFirst = document.querySelector(".slider__pagination-item");
 let currentActiveSlide = 0;
 let timerInterval = 5;
 
-paginationBtnFirst.classList.add("slider__pagination-item--active");
+const paginationActiveBar = document.createElement("span");
+paginationActiveBar.classList.add("slider__pagination-item--active");
+paginationBtnFirst.appendChild(paginationActiveBar);
 
 function switchToNextSlide() {
   paginationBtns.forEach((element) => {
-    element.classList.remove("slider__pagination-item--active");
+    element.innerHTML = "";
   });
   if (currentActiveSlide >= 2) {
     currentActiveSlide = 0;
@@ -22,9 +24,9 @@ function switchToNextSlide() {
     currentActiveSlide++;
   }
   translateToCurActiveSlide();
-  paginationBtns[currentActiveSlide].classList.add(
-    "slider__pagination-item--active"
-  );
+  const paginationActiveBar = document.createElement("span");
+  paginationActiveBar.classList.add("slider__pagination-item--active");
+  paginationBtns[currentActiveSlide].appendChild(paginationActiveBar);
   timerInterval = 5;
 }
 
@@ -32,7 +34,9 @@ nextBtn.addEventListener("click", switchToNextSlide);
 
 function switchToPrevSlide() {
   paginationBtns.forEach((element) => {
-    element.classList.remove("slider__pagination-item--active");
+    if (element.hasChildNodes) {
+      element.removeChild(element.firstChild);
+    }
   });
   if (currentActiveSlide <= 0) {
     currentActiveSlide = 2;
@@ -40,9 +44,9 @@ function switchToPrevSlide() {
     currentActiveSlide--;
   }
   translateToCurActiveSlide();
-  paginationBtns[currentActiveSlide].classList.add(
-    "slider__pagination-item--active"
-  );
+  const paginationActiveBar = document.createElement("span");
+  paginationActiveBar.classList.add("slider__pagination-item--active");
+  paginationBtns[currentActiveSlide].appendChild(paginationActiveBar);
   timerInterval = 5;
 }
 
@@ -61,6 +65,8 @@ const sliderTimer = setInterval(() => {
   if (!cursorOnSlider) {
     if (timerInterval !== 0) {
       timerInterval--;
+      document.querySelector(".slider__pagination-item--active").style.width =
+        (5 - timerInterval) * 20 + "%";
     } else {
       switchToNextSlide();
       timerInterval = 5;
