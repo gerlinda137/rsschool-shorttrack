@@ -46,7 +46,7 @@ body.no-scroll {
   padding: 0;
   white-space: nowrap;
   -webkit-clip-path: inset(100%);
-          clip-path: inset(100%);
+  clip-path: inset(100%);
   clip: rect(0 0 0 0);
   overflow: hidden;
 }
@@ -220,6 +220,7 @@ p {
 .header__menu-link.header__menu-link--active {
   border-bottom: var(--txt) solid 2px;
   transition: all 0.7s;
+  cursor: auto;
 }
 
 .enjoy {
