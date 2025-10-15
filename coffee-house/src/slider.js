@@ -56,10 +56,9 @@ function translateToCurActiveSlide() {
   }px)`;
 }
 
-let remainingTime = 0;
 let cursorOnSlider = false;
 
-const sliderTimer = setInterval(() => {
+setInterval(() => {
   if (!cursorOnSlider) {
     if (timerInterval !== 0) {
       timerInterval--;
