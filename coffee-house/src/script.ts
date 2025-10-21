@@ -1,10 +1,12 @@
-const header = document.querySelector(".header");
-const burger = header.querySelector(".burger");
-const navWrapper = header.querySelector(".nav__wrapper");
-const body = document.querySelector("body");
-const navLinks = header.querySelectorAll(" .nav-list__link");
-const menuLink = header.querySelector(".header__menu-link");
-const menuLinkActive = header.querySelector(".header__menu-link--active");
+const header = document.querySelector(".header") as HTMLElement;
+const burger = header.querySelector(".burger") as HTMLElement;
+const navWrapper = header.querySelector(".nav__wrapper") as HTMLElement;
+const body = document.querySelector("body") as HTMLElement;
+const navLinks = header.querySelectorAll<HTMLElement>(" .nav-list__link");
+const menuLink = header.querySelector(".header__menu-link") as HTMLElement;
+const menuLinkActive = header.querySelector(
+  ".header__menu-link--active"
+) as HTMLElement;
 
 if (menuLinkActive) {
   menuLinkActive.addEventListener("click", (e) => {
