@@ -1,12 +1,16 @@
-const slider = document.querySelector(".slider");
-const visibleWindow = slider.querySelector(".slider-window");
-const cardsTrack = slider.querySelector(".slider-cards");
-const card = slider.querySelector(".slider-card");
-const prevBtn = slider.querySelector("#prev-btn");
-const nextBtn = slider.querySelector("#next-btn");
-const paginationBtns = slider.querySelectorAll(".slider__pagination-item");
+const slider = document.querySelector(".slider") as HTMLElement;
+const visibleWindow = slider.querySelector(".slider-window") as HTMLElement;
+const cardsTrack = slider.querySelector(".slider-cards") as HTMLElement;
+const card = slider.querySelector(".slider-card") as HTMLElement;
+const prevBtn = slider.querySelector("#prev-btn") as HTMLButtonElement;
+const nextBtn = slider.querySelector("#next-btn") as HTMLButtonElement;
+const paginationBtns = slider.querySelectorAll<HTMLElement>(
+  ".slider__pagination-item"
+);
 let cardWidth = card.offsetWidth;
-const paginationBtnFirst = document.querySelector(".slider__pagination-item");
+const paginationBtnFirst = document.querySelector(
+  ".slider__pagination-item"
+) as HTMLElement;
 let currentActiveSlide = 0;
 let timerInterval = 5;
 
@@ -62,8 +66,13 @@ setInterval(() => {
   if (!cursorOnSlider) {
     if (timerInterval !== 0) {
       timerInterval--;
-      document.querySelector(".slider__pagination-item--active").style.width =
-        (5 - timerInterval) * 20 + "%";
+      const activeSlide = document.querySelector(
+        ".slider__pagination-item--active"
+      ) as HTMLElement;
+      if (!activeSlide) {
+        throw new Error("Slider element not found");
+      }
+      activeSlide.style.width = (5 - timerInterval) * 20 + "%";
     } else {
       switchToNextSlide();
       timerInterval = 5;
