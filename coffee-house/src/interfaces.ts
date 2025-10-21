@@ -26,5 +26,7 @@ export interface Product {
 }
 
 export interface ProductsData {
-  products: Product[];
+  data: Product[];
+  message: string;
+  error: string;
 }

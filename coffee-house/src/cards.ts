@@ -1,6 +1,8 @@
 import { Product, Sizes } from "./interfaces";
+import { getAllProducts } from "./api";
 
 let jsonData: Product[] = [];
+const loader = document.querySelector(".loader") as HTMLDivElement;
 const cardsList = document.querySelector(".cards") as HTMLElement;
 const template = document.getElementById(
   "card-template"
@@ -9,13 +11,25 @@ const moreCardsBtn = document.querySelector(".cards__btn") as HTMLElement;
 const tabs = document.querySelectorAll<HTMLElement>(".tabs__button");
 const root = document.querySelector("body") as HTMLElement;
 
-fetch("product.json")
-  .then((response: Response) => response.json())
-  .then(function (data: Product[]) {
-    jsonData = data;
+// fetch("product.json")
+//   .then((response: Response) => response.json())
+//   .then(function (data: Product[]) {
+//     jsonData = data;
+//     processData();
+//   })
+//   .catch((error: Error) => console.error("Error:", error));
+async function initialCardsLoad() {
+  try {
+    loader.classList.remove("hidden");
+    const ProductsData = await getAllProducts();
+    jsonData = ProductsData.data;
+    loader.classList.add("hidden");
+    console.log(jsonData);
     processData();
-  })
-  .catch((error: Error) => console.error("Error:", error));
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 function processData(category: string = "coffee") {
   const products: Product[] = [];
@@ -228,3 +242,5 @@ function calcPrice(cardData: Product) {
     }
   }
 }
+
+initialCardsLoad();
