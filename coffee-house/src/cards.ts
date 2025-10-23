@@ -232,48 +232,56 @@ function generatePopup(productData: SingleProduct): void {
       root.classList.remove("no-scroll");
     }
   });
-
   calcPrice(productData);
 }
 
 //popup math
 
 function calcPrice(productData: SingleProduct) {
-  let price = +productData.price;
+  let price = 0;
   const checkboxes = document.querySelectorAll(".checkbox input");
-
-  for (const checkbox of checkboxes) {
-    checkbox.addEventListener("change", () => {
-      price = +productData.price;
-      checkSize();
-      checkAdds();
-      let roundedPrice = price.toLocaleString("en-US", {
-        maximumFractionDigits: 2,
-        minimumFractionDigits: 2,
-      });
-      const totalPrice = document.querySelector(".total__price") as HTMLElement;
-      if (totalPrice) {
-        totalPrice.textContent = `$${roundedPrice}`;
-      }
-    });
-  }
-
   const sizeList = document.querySelector(
     ".popup__btns--size"
   ) as HTMLDivElement;
   const sizes = sizeList.querySelectorAll<HTMLInputElement>("input");
+
+  for (const size of sizes) {
+    if (size.checked === true) {
+      const sizeValue = size.id as keyof Sizes;
+      price = Number(productData.sizes[sizeValue].price);
+      break;
+    }
+  }
 
   const addList = document.querySelector(
     ".popup__btns--additives"
   ) as HTMLDivElement;
   const adds = addList.querySelectorAll<HTMLInputElement>("input");
 
+  for (const checkbox of checkboxes) {
+    checkbox.addEventListener("change", () => {
+      price = 0;
+      checkSize();
+      checkAdds();
+      let roundedPrice = price.toLocaleString("en-US", {
+        maximumFractionDigits: 2,
+        minimumFractionDigits: 2,
+      });
+      const totalPrice = document.querySelector(
+        ".total__price--current"
+      ) as HTMLElement;
+      if (totalPrice) {
+        totalPrice.textContent = `$${roundedPrice}`;
+      }
+    });
+  }
+
   function checkSize(): void {
     for (const size of sizes) {
       if (size.checked == true) {
         const sizeValue = size.id as keyof Sizes;
-
-        price += Number(productData.sizes[sizeValue].price);
+        price = Number(productData.sizes[sizeValue].price);
+        break;
       }
     }
   }
