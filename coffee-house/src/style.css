@@ -19,9 +19,14 @@
 html {
   font-size: 100%;
   scroll-behavior: smooth;
+  height: 100%;
 }
 
 body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  height: 100%;
   margin: 0;
   font-family: "Inter", sans-serif;
   font-weight: 400;
@@ -35,6 +40,10 @@ body {
 
 body.no-scroll {
   overflow: hidden;
+}
+
+.main {
+  flex: 1 0 auto;
 }
 
 .visually-hidden {
@@ -566,6 +575,7 @@ p {
   width: calc(100% - 80px);
   padding: 100px;
   color: var(--txt-light);
+  flex-shrink: 0;
 }
 
 
@@ -1063,17 +1073,47 @@ p {
   transform: translate(-50%, -50%);
   text-align: center;
   z-index: 1000;
+  font: inherit;
+  color: var(--txt-accent);
 }
 
 .spinner {
   width: 40px;
   height: 40px;
   border: 4px solid #f3f3f3;
-  border-top: 4px solid #3498db;
+  border-top: 4px solid var(--txt-accent);
   border-radius: 50%;
   -webkit-animation: spin 1s linear infinite;
   animation: spin 1s linear infinite;
   margin: 0 auto 10px;
+}
+
+.error-message {
+  color: var(--txt-accent);
+  text-align: center;
+  font-weight: bold;
+}
+
+.error-message.hidden {
+  display: none;
+}
+
+.error-message__inner {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--body);
+  padding: 3em 4em;
+  border-radius: 40px;
+  border-color: var(--border-dark);
+  border-width: 1px;
+  max-width: 600px;
+
+}
+
+
+
+.error-message h2 {
+  color: var(--txt-accent);
 }
 
 @-webkit-keyframes spin {

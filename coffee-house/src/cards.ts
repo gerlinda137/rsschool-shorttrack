@@ -2,7 +2,8 @@ import { Product, SingleProduct, Sizes } from "./interfaces";
 import { getAllProducts, getSingleProduct } from "./api";
 
 let jsonData: Product[] = [];
-const loader = document.querySelector(".loader") as HTMLDivElement;
+const tabsContainer = document.querySelector(".tabs") as HTMLDivElement;
+// const errorPopup = document.querySelector(".error-message");
 const cardsList = document.querySelector(".cards") as HTMLElement;
 const template = document.getElementById(
   "card-template"
@@ -11,22 +12,49 @@ const moreCardsBtn = document.querySelector(".cards__btn") as HTMLElement;
 const tabs = document.querySelectorAll<HTMLElement>(".tabs__button");
 const root = document.querySelector("body") as HTMLElement;
 
+function insertLoader(container: HTMLElement): HTMLDivElement {
+  const loader = document.createElement("div");
+  loader.className = "loader";
+
+  const spinner = document.createElement("div");
+  spinner.className = "spinner";
+
+  const text = document.createElement("p");
+  text.textContent = "Loading products...";
+
+  loader.appendChild(spinner);
+  loader.appendChild(text);
+
+  container.appendChild(loader);
+  return loader;
+}
+
 async function initialCardsLoad() {
+  let loader: HTMLDivElement | null = null;
   try {
-    loader.classList.remove("hidden");
+    if (tabsContainer) {
+      loader = insertLoader(tabsContainer);
+    }
     const ProductsData = await getAllProducts();
     jsonData = ProductsData.data;
-    loader.classList.add("hidden");
+    if (loader) {
+      loader.remove();
+    }
     console.log(jsonData);
     processData();
   } catch (error) {
+    if (loader) {
+      loader.remove();
+    }
+    if (tabsContainer) {
+      tabsContainer.innerHTML = `<p class="error-message">Something went wrong. Please, refresh the page</p>`;
+    }
     console.log(error);
   }
 }
 
 function processData(category: string = "coffee") {
   const products: Product[] = [];
-
   moreCardsBtn.classList.remove("hidden");
 
   for (const iterator of jsonData) {
@@ -109,11 +137,11 @@ const popUpTemplate = document.querySelector(
 
 async function generatePopupWithData(id: string) {
   try {
-    loader.classList.remove("hidden");
+    // loader.classList.remove("hidden");
     const productData = await getSingleProduct(id);
     const productJsonData = productData.data as SingleProduct;
     generatePopup(productJsonData);
-    loader.classList.add("hidden");
+    // loader.classList.add("hidden");
     console.log(productJsonData);
   } catch (error) {
     console.log(error);
