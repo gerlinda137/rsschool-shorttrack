@@ -855,6 +855,12 @@ p {
   line-height: 125%;
 }
 
+.card__price.card__price--old {
+  opacity: 0.5;
+  text-decoration: line-through;
+  margin-left: 8px;
+}
+
 .cards__btn {
   display: none;
 }
@@ -1046,7 +1052,7 @@ p {
   border-top: 4px solid #3498db;
   border-radius: 50%;
   -webkit-animation: spin 1s linear infinite;
-          animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite;
   margin: 0 auto 10px;
 }
 

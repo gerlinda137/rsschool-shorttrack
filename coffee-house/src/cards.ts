@@ -11,13 +11,6 @@ const moreCardsBtn = document.querySelector(".cards__btn") as HTMLElement;
 const tabs = document.querySelectorAll<HTMLElement>(".tabs__button");
 const root = document.querySelector("body") as HTMLElement;
 
-// fetch("product.json")
-//   .then((response: Response) => response.json())
-//   .then(function (data: Product[]) {
-//     jsonData = data;
-//     processData();
-//   })
-//   .catch((error: Error) => console.error("Error:", error));
 async function initialCardsLoad() {
   try {
     loader.classList.remove("hidden");
@@ -48,14 +41,25 @@ function processData(category: string = "coffee") {
     const cardDescription = clone.querySelector(
       ".card__description"
     ) as HTMLParagraphElement;
-    const cardPrice = clone.querySelector(".card__price") as HTMLSpanElement;
+    const cardPriceOld = clone.querySelector(
+      ".card__price--old"
+    ) as HTMLSpanElement;
+    const cardPriceCurrent = clone.querySelector(
+      ".card__price--current"
+    ) as HTMLSpanElement;
     const cardImg = clone.querySelector(".card__img") as HTMLImageElement;
     const card = clone.querySelector(".card") as HTMLDivElement;
     card.id = product.id;
 
     if (cardTitle) cardTitle.textContent = product.name;
     if (cardDescription) cardDescription.textContent = product.description;
-    if (cardPrice) cardPrice.textContent = `$${product.price}`;
+    if (cardPriceOld && product.discountPrice) {
+      cardPriceCurrent.textContent = `$${product.discountPrice}`;
+      cardPriceOld.textContent = `$${product.price}`;
+    } else {
+      cardPriceCurrent.textContent = `$${product.price}`;
+      cardPriceOld.remove();
+    }
     if (cardImg) {
       cardImg.src = `img/cards/${product.name}.jpg`;
       cardImg.alt = `${product.name} image`;
