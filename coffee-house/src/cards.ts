@@ -1,5 +1,5 @@
-import { Product, Sizes } from "./interfaces";
-import { getAllProducts } from "./api";
+import { Product, SingleProduct, Sizes } from "./interfaces";
+import { getAllProducts, getSingleProduct } from "./api";
 
 let jsonData: Product[] = [];
 const loader = document.querySelector(".loader") as HTMLDivElement;
@@ -51,6 +51,7 @@ function processData(category: string = "coffee") {
     const cardPrice = clone.querySelector(".card__price") as HTMLSpanElement;
     const cardImg = clone.querySelector(".card__img") as HTMLImageElement;
     const card = clone.querySelector(".card") as HTMLDivElement;
+    card.id = product.id;
 
     if (cardTitle) cardTitle.textContent = product.name;
     if (cardDescription) cardDescription.textContent = product.description;
@@ -60,7 +61,7 @@ function processData(category: string = "coffee") {
       cardImg.alt = `${product.name} image`;
     }
     if (card) {
-      card.addEventListener("click", () => generatePopup(product));
+      card.addEventListener("click", () => generatePopupWithData(product.id));
     }
 
     cardsList.appendChild(clone);
@@ -97,11 +98,25 @@ moreCardsBtn.onclick = () => {
 };
 
 //popup
+
 const popUpTemplate = document.querySelector(
   ".popup-template"
 ) as HTMLTemplateElement;
 
-function generatePopup(cardData: Product): void {
+async function generatePopupWithData(id: string) {
+  try {
+    loader.classList.remove("hidden");
+    const productData = await getSingleProduct(id);
+    const productJsonData = productData.data as SingleProduct;
+    generatePopup(productJsonData);
+    loader.classList.add("hidden");
+    console.log(productJsonData);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+function generatePopup(productData: SingleProduct): void {
   const popupClone = popUpTemplate.content.cloneNode(true) as DocumentFragment;
   const popupTitle = popupClone.querySelector(
     ".popup__title"
@@ -116,12 +131,12 @@ function generatePopup(cardData: Product): void {
     ".popup__img img"
   ) as HTMLImageElement;
 
-  if (popupTitle) popupTitle.textContent = cardData.name;
-  if (popupDescription) popupDescription.textContent = cardData.description;
-  if (totalPrice) totalPrice.textContent = `$${cardData.price}`;
+  if (popupTitle) popupTitle.textContent = productData.name;
+  if (popupDescription) popupDescription.textContent = productData.description;
+  if (totalPrice) totalPrice.textContent = `$${productData.price}`;
   if (popupImg) {
-    popupImg.src = `img/cards/${cardData.name}.jpg`;
-    popupImg.alt = `${cardData.name} image`;
+    popupImg.src = `img/cards/${productData.name}.jpg`;
+    popupImg.alt = `${productData.name} image`;
   }
 
   const btnsSizeContainer = popupClone.querySelector(
@@ -137,8 +152,8 @@ function generatePopup(cardData: Product): void {
     const buttonInput = button.querySelector("input") as HTMLInputElement;
     if (buttonLabel && buttonInput) {
       const inputId = buttonInput.id as keyof Sizes;
-      if (cardData.sizes[inputId]) {
-        buttonLabel.textContent = cardData.sizes[inputId].size;
+      if (productData.sizes[inputId]) {
+        buttonLabel.textContent = productData.sizes[inputId].size;
       }
     }
   }
@@ -157,8 +172,8 @@ function generatePopup(cardData: Product): void {
     const buttonInput = button.querySelector("input") as HTMLInputElement;
     if (buttonLabel && buttonInput) {
       const inputId = parseInt(buttonInput.id);
-      if (cardData.additives[inputId]) {
-        buttonLabel.textContent = cardData.additives[inputId].name;
+      if (productData.additives[inputId]) {
+        buttonLabel.textContent = productData.additives[inputId].name;
       }
     }
   }
@@ -188,18 +203,18 @@ function generatePopup(cardData: Product): void {
     }
   });
 
-  calcPrice(cardData);
+  calcPrice(productData);
 }
 
 //popup math
 
-function calcPrice(cardData: Product) {
-  let price = +cardData.price;
+function calcPrice(productData: SingleProduct) {
+  let price = +productData.price;
   const checkboxes = document.querySelectorAll(".checkbox input");
 
   for (const checkbox of checkboxes) {
     checkbox.addEventListener("change", () => {
-      price = +cardData.price;
+      price = +productData.price;
       checkSize();
       checkAdds();
       let roundedPrice = price.toLocaleString("en-US", {
@@ -228,7 +243,7 @@ function calcPrice(cardData: Product) {
       if (size.checked == true) {
         const sizeValue = size.id as keyof Sizes;
 
-        price += Number(cardData.sizes[sizeValue]["add-price"]);
+        price += Number(productData.sizes[sizeValue].price);
       }
     }
   }
@@ -237,7 +252,7 @@ function calcPrice(cardData: Product) {
     for (const add of adds) {
       if (add.checked == true) {
         const addValue = parseInt(add.id);
-        price += Number(cardData.additives[addValue]["add-price"]);
+        price += Number(productData.additives[addValue].price);
       }
     }
   }

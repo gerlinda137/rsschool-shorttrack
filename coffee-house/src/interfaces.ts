@@ -1,32 +1,52 @@
 export interface Additive {
   name: string;
-  "add-price": string;
+  price: string;
+  discountPrice?: string;
 }
 
 export interface Size {
   size: string;
-  "add-price": string;
+  price: string;
+  discountPrice?: string;
 }
 
 export interface Sizes {
   s: Size;
   m: Size;
   l: Size;
+  xl: Size;
 }
 
 export type Category = "coffee" | "tea" | "dessert";
 
 export interface Product {
+  id: string;
   name: string;
   description: string;
   price: string;
+  discountPrice?: string;
+  category: Category;
+}
+
+export interface ProductsData {
+  data: Product[];
+  message: string;
+  error: string;
+}
+
+export interface SingleProduct {
+  id: string;
+  name: string;
+  description: string;
+  price: string;
+  discountPrice?: string;
   category: Category;
   sizes: Sizes;
   additives: Additive[];
 }
 
-export interface ProductsData {
-  data: Product[];
+export interface SingleProductResponse {
+  data: Product;
   message: string;
   error: string;
 }
