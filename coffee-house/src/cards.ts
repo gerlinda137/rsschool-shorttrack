@@ -136,14 +136,22 @@ const popUpTemplate = document.querySelector(
 ) as HTMLTemplateElement;
 
 async function generatePopupWithData(id: string) {
+  let loader: HTMLDivElement | null = null;
   try {
-    // loader.classList.remove("hidden");
+    if (root) {
+      loader = insertLoader(root);
+    }
     const productData = await getSingleProduct(id);
     const productJsonData = productData.data as SingleProduct;
     generatePopup(productJsonData);
-    // loader.classList.add("hidden");
+    if (loader) {
+      loader.remove();
+    }
     console.log(productJsonData);
   } catch (error) {
+    if (loader) {
+      loader.remove();
+    }
     console.log(error);
   }
 }
