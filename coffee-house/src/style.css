@@ -1000,6 +1000,12 @@ p {
   line-height: 125%;
 }
 
+.total__price.total__price--old {
+  opacity: 0.5;
+  text-decoration: line-through;
+  margin-right: 20px;
+}
+
 .descretion {
   padding: 12px 0;
   padding-left: calc(16px + 8px);

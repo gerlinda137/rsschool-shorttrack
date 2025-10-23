@@ -128,8 +128,11 @@ function generatePopup(productData: SingleProduct): void {
   const popupDescription = popupClone.querySelector(
     ".popup__description"
   ) as HTMLParagraphElement;
-  const totalPrice = popupClone.querySelector(
-    ".total__price"
+  const totalPriceCurrent = popupClone.querySelector(
+    ".total__price--current"
+  ) as HTMLSpanElement;
+  const totalPriceOld = popupClone.querySelector(
+    ".total__price--old"
   ) as HTMLSpanElement;
   const popupImg = popupClone.querySelector(
     ".popup__img img"
@@ -137,7 +140,13 @@ function generatePopup(productData: SingleProduct): void {
 
   if (popupTitle) popupTitle.textContent = productData.name;
   if (popupDescription) popupDescription.textContent = productData.description;
-  if (totalPrice) totalPrice.textContent = `$${productData.price}`;
+  if (totalPriceCurrent && productData.discountPrice) {
+    totalPriceCurrent.textContent = `$${productData.discountPrice}`;
+    totalPriceOld.textContent = `$${productData.price}`;
+  } else {
+    totalPriceCurrent.textContent = `$${productData.price}`;
+    totalPriceOld.remove();
+  }
   if (popupImg) {
     popupImg.src = `img/cards/${productData.name}.jpg`;
     popupImg.alt = `${productData.name} image`;
