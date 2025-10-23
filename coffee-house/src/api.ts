@@ -1,7 +1,7 @@
 import { ProductsData, SingleProductResponse } from "./interfaces";
 
 const allProductsUrl =
-  "http://coffee-shop-be.eu-central-1.elasticbeanstalk.com/products";
+  "https://6kt29kkeub.execute-api.eu-central-1.amazonaws.com/products";
 
 export async function getAllProducts(): Promise<ProductsData> {
   try {
@@ -20,7 +20,7 @@ export async function getAllProducts(): Promise<ProductsData> {
 export async function getSingleProduct(
   productId: string
 ): Promise<SingleProductResponse> {
-  const singleProductUrl = `http://coffee-shop-be.eu-central-1.elasticbeanstalk.com/products/${productId}`;
+  const singleProductUrl = `https://6kt29kkeub.execute-api.eu-central-1.amazonaws.com/products/${productId}`;
   try {
     const response = await fetch(singleProductUrl);
     if (!response.ok) {

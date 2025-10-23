@@ -198,12 +198,22 @@ function generatePopup(productData: SingleProduct): void {
   const popupInner = popupAppended.querySelector(
     ".popup__inner"
   ) as HTMLDivElement;
-  const popupClose = popupAppended.querySelector(
-    ".popup__close"
+  const popupAddToCart = popupAppended.querySelector(
+    ".popup__add-to-cart"
+  ) as HTMLButtonElement;
+  const closeBtn = popupAppended.querySelector(
+    ".popup__close-btn"
   ) as HTMLButtonElement;
 
-  if (popupClose) {
-    popupClose.addEventListener("click", () => {
+  if (closeBtn) {
+    closeBtn.addEventListener("click", () => {
+      popupAppended.remove();
+      root.classList.remove("no-scroll");
+    });
+  }
+
+  if (popupAddToCart) {
+    popupAddToCart.addEventListener("click", () => {
       popupAppended.remove();
       root.classList.remove("no-scroll");
     });
@@ -211,6 +221,13 @@ function generatePopup(productData: SingleProduct): void {
 
   document.addEventListener("click", (e: MouseEvent) => {
     if (popupAppended && e.target !== popupInner && e.target == popupAppended) {
+      popupAppended.remove();
+      root.classList.remove("no-scroll");
+    }
+  });
+
+  document.addEventListener("keydown", (e: KeyboardEvent) => {
+    if (popupAppended && e.key === "Escape") {
       popupAppended.remove();
       root.classList.remove("no-scroll");
     }
