@@ -889,6 +889,17 @@ p {
   justify-content: center;
 }
 
+.popup-error {
+  background-color: var(--popup-bg);
+  color: var(--txt-light);
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 1em 3em;
+  border-radius: 40px;
+}
+
 .popup__close-btn {
   width: 40px;
   height: 40px;

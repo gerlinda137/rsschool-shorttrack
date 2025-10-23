@@ -149,9 +149,21 @@ async function generatePopupWithData(id: string) {
     }
     console.log(productJsonData);
   } catch (error) {
-    if (loader) {
-      loader.remove();
-    }
+    setTimeout(() => {
+      if (loader) {
+        loader.remove();
+      }
+      const popupError = document.createElement("p");
+      popupError.className = "popup-error";
+      popupError.textContent = "Something went wrong. Please, try again";
+      if (root) {
+        root.append(popupError);
+      }
+      setTimeout(() => {
+        popupError.remove();
+      }, 1500);
+    }, 1000);
+
     console.log(error);
   }
 }
