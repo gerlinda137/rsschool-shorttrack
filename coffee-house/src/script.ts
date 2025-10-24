@@ -7,6 +7,7 @@ const menuLink = header.querySelector(".header__menu-link") as HTMLElement;
 const menuLinkActive = header.querySelector(
   ".header__menu-link--active"
 ) as HTMLElement;
+const headerCartLink = header.querySelector(".header__cart-txt") as HTMLElement;
 
 if (menuLinkActive) {
   menuLinkActive.addEventListener("click", (e) => {
@@ -19,6 +20,7 @@ burger.addEventListener("click", () => {
   navWrapper.classList.toggle("open");
   burger.classList.toggle("cross");
   body.classList.toggle("no-scroll");
+  headerCartLink.classList.remove("visually-hidden");
 });
 
 function closeMenuOnLink() {
@@ -35,6 +37,13 @@ function closeMenuOnLink() {
       navWrapper.classList.remove("open");
       body.classList.remove("no-scroll");
     });
+    headerCartLink.addEventListener("click", () => {
+      burger.classList.remove("cross");
+      navWrapper.classList.remove("open");
+      body.classList.remove("no-scroll");
+    });
+  } else {
+    headerCartLink.classList.add("visually-hidden");
   }
 }
 
