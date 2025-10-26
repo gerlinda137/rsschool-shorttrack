@@ -12,7 +12,7 @@ const moreCardsBtn = document.querySelector(".cards__btn") as HTMLElement;
 const tabs = document.querySelectorAll<HTMLElement>(".tabs__button");
 const root = document.querySelector("body") as HTMLElement;
 
-function insertLoader(container: HTMLElement): HTMLDivElement {
+export function insertLoader(container: HTMLElement): HTMLDivElement {
   const loader = document.createElement("div");
   loader.className = "loader";
 

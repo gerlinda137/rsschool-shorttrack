@@ -1,4 +1,11 @@
+import { getFavProducts } from "./api";
+import { insertLoader } from "./cards";
+import { FavoriteProduct } from "./interfaces";
+
 const slider = document.querySelector(".slider") as HTMLElement;
+const sliderTemplate = document.getElementById(
+  "slider-card-template"
+) as HTMLTemplateElement;
 const visibleWindow = slider.querySelector(".slider-window") as HTMLElement;
 const cardsTrack = slider.querySelector(".slider-cards") as HTMLElement;
 const card = slider.querySelector(".slider-card") as HTMLElement;
@@ -121,3 +128,55 @@ window.addEventListener("resize", () => {
     cardWidth = card.offsetWidth;
   }
 });
+
+function generateSliderCards(products: FavoriteProduct[]): void {
+  if (cardsTrack) {
+    cardsTrack.innerHTML = "";
+  }
+
+  for (const product of products) {
+    const clone = sliderTemplate.content.cloneNode(true) as DocumentFragment;
+    const sliderCard = clone.querySelector(".slider-card") as HTMLDivElement;
+
+    const img = clone.querySelector(".slider__img") as HTMLImageElement;
+    const title = clone.querySelector(".slider__title") as HTMLHeadingElement;
+    const description = clone.querySelector(
+      ".slider__description"
+    ) as HTMLParagraphElement;
+    const price = clone.querySelector(".slider__price") as HTMLHeadingElement;
+
+    img.src = `img/cards/${product.name}.jpg`;
+    img.alt = `${product.name} image`;
+    title.textContent = product.name;
+    description.textContent = product.description;
+    price.textContent = `$${product.discountPrice || product.price}`;
+
+    cardsTrack.appendChild(sliderCard);
+  }
+}
+
+async function initialSlidesLoad() {
+  let loader: HTMLDivElement | null = null;
+  try {
+    if (slider) {
+      loader = insertLoader(slider);
+    }
+    const favoritesData = await getFavProducts();
+    const jsonData = favoritesData.data;
+    if (loader) {
+      loader.remove();
+    }
+    console.log(jsonData);
+    generateSliderCards(jsonData);
+  } catch (error) {
+    if (loader) {
+      loader.remove();
+    }
+    if (slider) {
+      slider.innerHTML = `<p class="error-message">Something went wrong. Please, refresh the page</p>`;
+    }
+    console.log(error);
+  }
+}
+
+initialSlidesLoad();

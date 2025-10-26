@@ -51,18 +51,6 @@ export interface SingleProductResponse {
   error: string;
 }
 
-// export interface CartItem {
-//   productId: string;
-//   size: string;
-//   additives: string[];
-//   quantity: number;
-// }
-
-// export interface CartItems {
-//   items: CartItem[];
-//   totalPrice: number;
-// }
-
 export interface CartItemLocal {
   productId: string;
   name: string;
@@ -71,4 +59,17 @@ export interface CartItemLocal {
   quantity: number;
   price: number;
   totalItemPrice: number;
+}
+
+export interface FavoriteProduct {
+  id: number;
+  name: string;
+  description: string;
+  price: string;
+  discountPrice?: string;
+  category: Category;
+}
+
+export interface FavoritesResponse {
+  data: FavoriteProduct[];
 }
