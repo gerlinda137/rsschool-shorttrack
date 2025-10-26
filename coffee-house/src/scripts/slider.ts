@@ -1,5 +1,5 @@
 import { getFavProducts } from "./api";
-import { insertLoader } from "./cards";
+import { insertLoader } from "./loader";
 import { FavoriteProduct } from "./interfaces";
 
 const slider = document.querySelector(".slider") as HTMLElement;

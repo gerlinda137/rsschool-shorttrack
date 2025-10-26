@@ -1,6 +1,7 @@
 import { CartItemLocal, Product, SingleProduct, Sizes } from "./interfaces";
 import { getAllProducts, getSingleProduct } from "./api";
 import { addToCartLocal, updateCartInHeader } from "./cart";
+import { insertLoader } from "./loader";
 
 let jsonData: Product[] = [];
 const tabsContainer = document.querySelector(".tabs") as HTMLDivElement;
@@ -11,23 +12,6 @@ const template = document.getElementById(
 const moreCardsBtn = document.querySelector(".cards__btn") as HTMLElement;
 const tabs = document.querySelectorAll<HTMLElement>(".tabs__button");
 const root = document.querySelector("body") as HTMLElement;
-
-export function insertLoader(container: HTMLElement): HTMLDivElement {
-  const loader = document.createElement("div");
-  loader.className = "loader";
-
-  const spinner = document.createElement("div");
-  spinner.className = "spinner";
-
-  const text = document.createElement("p");
-  text.textContent = "Loading products...";
-
-  loader.appendChild(spinner);
-  loader.appendChild(text);
-
-  container.appendChild(loader);
-  return loader;
-}
 
 async function initialCardsLoad() {
   let loader: HTMLDivElement | null = null;
