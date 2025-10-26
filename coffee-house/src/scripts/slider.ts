@@ -8,7 +8,6 @@ const sliderTemplate = document.getElementById(
 ) as HTMLTemplateElement;
 const visibleWindow = slider.querySelector(".slider-window") as HTMLElement;
 const cardsTrack = slider.querySelector(".slider-cards") as HTMLElement;
-const card = slider.querySelector(".slider-card") as HTMLElement;
 const prevBtn = slider.querySelector("#prev-btn") as HTMLButtonElement;
 const nextBtn = slider.querySelector("#next-btn") as HTMLButtonElement;
 const paginationBtns = slider.querySelectorAll<HTMLElement>(
@@ -102,7 +101,8 @@ slider.addEventListener("touchend", (e) => {
 });
 
 window.addEventListener("resize", () => {
-  if (window.innerWidth < 767) {
+  const card = document.querySelector(".slider-card") as HTMLDivElement;
+  if (window.innerWidth < 767 && card) {
     visibleWindow.style.maxWidth = "348px";
     cardWidth = card.offsetWidth;
   } else {
