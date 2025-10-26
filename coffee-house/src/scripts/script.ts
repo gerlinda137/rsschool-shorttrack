@@ -1,3 +1,5 @@
+import { updateCartInHeader } from "./cart";
+
 const header = document.querySelector(".header") as HTMLElement;
 const burger = header.querySelector(".burger") as HTMLElement;
 const navWrapper = header.querySelector(".nav__wrapper") as HTMLElement;
@@ -14,6 +16,8 @@ if (menuLinkActive) {
     e.preventDefault();
   });
 }
+
+updateCartInHeader();
 
 burger.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });

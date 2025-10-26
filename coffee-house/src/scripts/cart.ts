@@ -34,3 +34,15 @@ export function addToCartLocal(item: CartItemLocal): void {
 
   localStorage.setItem("cart", JSON.stringify(currentCart));
 }
+
+export function updateCartInHeader() {
+  const headerCartNum = document.querySelector(".header__cart-link-num");
+  const cart = getLocalCart();
+  let total = 0;
+  for (const item of cart) {
+    total += item.quantity;
+  }
+  if (headerCartNum) {
+    headerCartNum.textContent = total.toString();
+  }
+}

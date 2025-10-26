@@ -1,6 +1,6 @@
 import { CartItemLocal, Product, SingleProduct, Sizes } from "./interfaces";
 import { getAllProducts, getSingleProduct } from "./api";
-import { addToCartLocal } from "./cart";
+import { addToCartLocal, updateCartInHeader } from "./cart";
 
 let jsonData: Product[] = [];
 const tabsContainer = document.querySelector(".tabs") as HTMLDivElement;
@@ -273,6 +273,7 @@ function generatePopup(productData: SingleProduct): void {
         btnsAddsInputs
       );
       addToCartLocal(selectedData);
+      updateCartInHeader();
       popupAddToCart.textContent = "✓ Added!";
       popupAddToCart.style.backgroundColor = "#4da750b3";
       setTimeout(() => {
