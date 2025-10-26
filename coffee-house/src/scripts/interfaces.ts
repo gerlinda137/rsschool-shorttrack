@@ -66,7 +66,7 @@ export interface SingleProductResponse {
 export interface CartItemLocal {
   productId: string;
   name: string;
-  size: string;
+  size: Size;
   additives: string[];
   quantity: number;
   price: number;

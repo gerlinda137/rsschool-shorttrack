@@ -4,7 +4,6 @@ import { addToCartLocal, updateCartInHeader } from "./cart";
 
 let jsonData: Product[] = [];
 const tabsContainer = document.querySelector(".tabs") as HTMLDivElement;
-// const errorPopup = document.querySelector(".error-message");
 const cardsList = document.querySelector(".cards") as HTMLElement;
 const template = document.getElementById(
   "card-template"
@@ -235,13 +234,18 @@ function generatePopup(productData: SingleProduct): void {
       ".checkbox__label"
     ) as HTMLLabelElement;
     const buttonInput = button.querySelector("input") as HTMLInputElement;
-    btnsAddsInputs.push(buttonInput);
+
     if (buttonLabel && buttonInput) {
       const inputId = parseInt(buttonInput.id);
       if (productData.additives[inputId]) {
         buttonLabel.textContent = productData.additives[inputId].name;
+        buttonInput.setAttribute(
+          "name",
+          `${productData.additives[inputId].name.toLowerCase()}`
+        );
       }
     }
+    btnsAddsInputs.push(buttonInput);
   }
 
   root.classList.add("no-scroll");
@@ -415,18 +419,21 @@ function gatherSelectedOptions(
   sizes: HTMLInputElement[],
   adds: HTMLInputElement[]
 ): CartItemLocal {
-  const selectedSize = getSelectedSize(sizes);
+  const selectedSizeId = getSelectedSize(sizes);
+  const selectedSizeObj = selectedSizeId
+    ? productData.sizes[selectedSizeId as keyof Sizes]
+    : productData.sizes.s;
   const selectedAdditives = getSelectedAdditives(adds);
   const totalPrice = calculateTotalPrice(
     productData,
-    selectedSize,
+    selectedSizeId,
     selectedAdditives
   );
   const selectedAdditivesList = getSelectedAdditivesList(selectedAdditives);
   return {
     productId: productData.id,
     name: productData.name,
-    size: selectedSize || "s",
+    size: selectedSizeObj,
     additives: selectedAdditivesList,
     quantity: 1,
     price: totalPrice,

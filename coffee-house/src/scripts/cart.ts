@@ -1,6 +1,6 @@
 import { CartItemLocal } from "./interfaces";
 
-function getLocalCart(): CartItemLocal[] {
+export function getLocalCart(): CartItemLocal[] {
   const cartJson = localStorage.getItem("cart");
   if (cartJson) {
     return JSON.parse(cartJson) as CartItemLocal[];
