@@ -35,6 +35,20 @@ export function addToCartLocal(item: CartItemLocal): void {
   localStorage.setItem("cart", JSON.stringify(currentCart));
 }
 
+export function removeFromCart(itemToRemove: CartItemLocal): void {
+  const currentCart = getLocalCart();
+  const updatedCart = currentCart.filter(
+    (item) =>
+      !(
+        item.productId === itemToRemove.productId &&
+        item.size.size === itemToRemove.size.size &&
+        JSON.stringify(item.additives) ===
+          JSON.stringify(itemToRemove.additives)
+      )
+  );
+  localStorage.setItem("cart", JSON.stringify(updatedCart));
+}
+
 export function updateCartInHeader() {
   const headerCartNum = document.querySelector(".header__cart-link-num");
   const cart = getLocalCart();
