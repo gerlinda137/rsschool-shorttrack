@@ -203,49 +203,50 @@ function generatePopup(productData: SingleProduct): void {
   const btnsSizeContainer = popupClone.querySelector(
     ".popup__btns--size"
   ) as HTMLDivElement;
-  const btnsSize = btnsSizeContainer.querySelectorAll<HTMLElement>(".checkbox");
   const btnsSizeInputs = [] as HTMLInputElement[];
 
-  for (let i = 0; i < btnsSize.length; i++) {
-    const button = btnsSize[i];
-    const buttonLabel = button.querySelector(
-      ".checkbox__label"
-    ) as HTMLLabelElement;
-    const buttonInput = button.querySelector("input") as HTMLInputElement;
-    btnsSizeInputs.push(buttonInput);
-    if (buttonLabel && buttonInput) {
-      const inputId = buttonInput.id as keyof Sizes;
-      if (productData.sizes[inputId]) {
-        buttonLabel.textContent = productData.sizes[inputId].size;
-      }
-    }
+  btnsSizeContainer.innerHTML = "";
+
+  for (const sizeKey in productData.sizes) {
+    const size = productData.sizes[sizeKey as keyof Sizes];
+
+    const li = document.createElement("li");
+    li.className = "popup__btn-item";
+    li.innerHTML = `
+    <label class="checkbox">
+      <input class="visually-hidden" type="radio" name="size" id="${sizeKey}" value="${sizeKey}">
+      <span class="checkbox__custom-box">${sizeKey.toUpperCase()}</span>
+      <span class="checkbox__label">${size.size}</span>
+    </label>
+  `;
+
+    btnsSizeContainer.appendChild(li);
+    btnsSizeInputs.push(li.querySelector("input")!);
   }
+  btnsSizeInputs[0].checked = true;
 
   const btnsAddContainer = popupClone.querySelector(
     ".popup__btns--additives"
   ) as HTMLDivElement;
-  const btnsAdd =
-    btnsAddContainer.querySelectorAll<HTMLDivElement>(".checkbox");
   const btnsAddsInputs = [] as HTMLInputElement[];
 
-  for (let i = 0; i < btnsAdd.length; i++) {
-    const button = btnsAdd[i];
-    const buttonLabel = button.querySelector(
-      ".checkbox__label"
-    ) as HTMLLabelElement;
-    const buttonInput = button.querySelector("input") as HTMLInputElement;
+  btnsAddContainer.innerHTML = "";
 
-    if (buttonLabel && buttonInput) {
-      const inputId = parseInt(buttonInput.id);
-      if (productData.additives[inputId]) {
-        buttonLabel.textContent = productData.additives[inputId].name;
-        buttonInput.setAttribute(
-          "name",
-          `${productData.additives[inputId].name.toLowerCase()}`
-        );
-      }
-    }
-    btnsAddsInputs.push(buttonInput);
+  for (let i = 0; i < productData.additives.length; i++) {
+    const additive = productData.additives[i];
+
+    const li = document.createElement("li");
+    li.className = "popup__btn-item";
+    li.innerHTML = `
+    <label class="checkbox">
+      <input class="visually-hidden" type="checkbox" name="${additive.name.toLowerCase()}" id="${i}">
+      <span class="checkbox__custom-box">${i + 1}</span>
+      <span class="checkbox__label">${additive.name}</span>
+    </label>
+  `;
+
+    btnsAddContainer.appendChild(li);
+    btnsAddsInputs.push(li.querySelector("input")!);
   }
 
   root.classList.add("no-scroll");
