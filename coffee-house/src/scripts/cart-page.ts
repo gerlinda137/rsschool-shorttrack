@@ -4,6 +4,7 @@ const cartList = document.querySelector(".cart-items");
 const template = document.getElementById(
   "cart-item-template"
 ) as HTMLTemplateElement;
+const cartTotalPrice = document.querySelector(".cart-total__price");
 
 export function generateCartList(cartItems: CartItemLocal[]) {
   for (const cartItem of cartItems) {
@@ -17,7 +18,7 @@ export function generateCartList(cartItems: CartItemLocal[]) {
     const img = clone.querySelector(".item__img") as HTMLImageElement;
 
     if (cartItem.quantity > 1) {
-      quantity.textContent = `${cartItem.quantity}`;
+      quantity.textContent = `${cartItem.quantity} units`;
     }
 
     title.textContent = cartItem.name;
@@ -26,12 +27,24 @@ export function generateCartList(cartItems: CartItemLocal[]) {
       infoText += `, ${cartItem.additives.join(", ")}`;
     }
     info.textContent = infoText;
-    currentPrice.textContent = `$${cartItem.totalItemPrice}`;
+    currentPrice.textContent = `$${cartItem.totalItemPrice.toFixed(2)}`;
     img.src = `img/cards/${cartItem.name}.jpg`;
     img.alt = `${cartItem.name} image`;
     cartList?.append(clone);
   }
 }
 
+export function calcTotalPrice(cart: CartItemLocal[]): string {
+  let total = 0;
+  for (const item of cart) {
+    total += item.totalItemPrice;
+  }
+  return total.toFixed(2);
+}
+
 const localCart = getLocalCart();
 generateCartList(localCart);
+
+if (cartTotalPrice) {
+  cartTotalPrice.textContent = `$${calcTotalPrice(localCart)}`;
+}

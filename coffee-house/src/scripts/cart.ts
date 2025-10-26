@@ -18,7 +18,7 @@ export function addToCartLocal(item: CartItemLocal): void {
 
     if (
       cartItem.productId === item.productId &&
-      cartItem.size === item.size &&
+      cartItem.size.size === item.size.size &&
       JSON.stringify(cartItem.additives) === JSON.stringify(item.additives)
     ) {
       cartItem.quantity += 1;
