@@ -120,14 +120,16 @@ for (const tab of tabs) {
   });
 }
 
-moreCardsBtn.onclick = () => {
-  const cards = document.querySelectorAll(".card");
+if (moreCardsBtn) {
+  moreCardsBtn.onclick = () => {
+    const cards = document.querySelectorAll(".card");
 
-  for (const card of cards) {
-    card.classList.add("show-all");
-  }
-  moreCardsBtn.classList.add("hidden");
-};
+    for (const card of cards) {
+      card.classList.add("show-all");
+    }
+    moreCardsBtn.classList.add("hidden");
+  };
+}
 
 //popup
 

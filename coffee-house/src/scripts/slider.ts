@@ -14,7 +14,7 @@ const nextBtn = slider.querySelector("#next-btn") as HTMLButtonElement;
 const paginationBtns = slider.querySelectorAll<HTMLElement>(
   ".slider__pagination-item"
 );
-let cardWidth = card.offsetWidth;
+let cardWidth = 0;
 const paginationBtnFirst = document.querySelector(
   ".slider__pagination-item"
 ) as HTMLElement;
@@ -68,24 +68,6 @@ function translateToCurActiveSlide() {
 }
 
 let cursorOnSlider = false;
-
-setInterval(() => {
-  if (!cursorOnSlider) {
-    if (timerInterval !== 0) {
-      timerInterval--;
-      const activeSlide = document.querySelector(
-        ".slider__pagination-item--active"
-      ) as HTMLElement;
-      if (!activeSlide) {
-        throw new Error("Slider element not found");
-      }
-      activeSlide.style.width = (5 - timerInterval) * 20 + "%";
-    } else {
-      switchToNextSlide();
-      timerInterval = 5;
-    }
-  }
-}, 1000);
 
 visibleWindow.addEventListener("mouseover", () => {
   cursorOnSlider = true;
@@ -152,6 +134,7 @@ function generateSliderCards(products: FavoriteProduct[]): void {
     price.textContent = `$${product.discountPrice || product.price}`;
 
     cardsTrack.appendChild(sliderCard);
+    cardWidth = sliderCard.offsetWidth;
   }
 }
 
@@ -168,6 +151,23 @@ async function initialSlidesLoad() {
     }
     console.log(jsonData);
     generateSliderCards(jsonData);
+    setInterval(() => {
+      if (!cursorOnSlider) {
+        if (timerInterval !== 0) {
+          timerInterval--;
+          const activeSlide = document.querySelector(
+            ".slider__pagination-item--active"
+          ) as HTMLElement;
+          if (!activeSlide) {
+            throw new Error("Slider element not found");
+          }
+          activeSlide.style.width = (5 - timerInterval) * 20 + "%";
+        } else {
+          switchToNextSlide();
+          timerInterval = 5;
+        }
+      }
+    }, 1000);
   } catch (error) {
     if (loader) {
       loader.remove();
@@ -178,5 +178,5 @@ async function initialSlidesLoad() {
     console.log(error);
   }
 }
-
+console.log("загрузился");
 initialSlidesLoad();

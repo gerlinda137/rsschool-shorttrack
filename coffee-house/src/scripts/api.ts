@@ -39,7 +39,7 @@ export async function getSingleProduct(
 }
 
 const favProductsUrl =
-  "'https://6kt29kkeub.execute-api.eu-central-1.amazonaws.com/products/favorites'";
+  "https://6kt29kkeub.execute-api.eu-central-1.amazonaws.com/products/favorites";
 
 export async function getFavProducts(): Promise<FavoritesResponse> {
   try {
