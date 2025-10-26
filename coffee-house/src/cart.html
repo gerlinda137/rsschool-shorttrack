@@ -11,7 +11,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="manifest" href="site.webmanifest">
-  <title>Home</title>
+  <title>Menu</title>
 </head>
 
 <body>
@@ -87,13 +87,13 @@
         <nav class="nav">
           <ul class="nav-list">
             <li class="nav-list__item">
-              <a href="#favourite" class="nav-list__link">Favorite coffee</a>
+              <a href="index.html#favourite" class="nav-list__link">Favorite coffee</a>
             </li>
             <li class="nav-list__item">
-              <a href="#about" class="nav-list__link">About</a>
+              <a href="index.html#about" class="nav-list__link">About</a>
             </li>
             <li class="nav-list__item">
-              <a href="#app" class="nav-list__link">Mobile app</a>
+              <a href="index.html#app" class="nav-list__link">Mobile app</a>
             </li>
             <li class="nav-list__item">
               <a href="#contact" class="nav-list__link">Contact us</a>
@@ -113,179 +113,41 @@
             </svg>
             <span class="header__cart-link-num"></span>
           </a>
-          <a href="menu.html" class="header__menu-link">Menu</a>
+          <a href="menu.html" class="header__menu-link header__menu-link--active">Menu</a>
         </div>
       </div>
     </div>
   </header>
   <main class="main container">
-    <section class="enjoy">
-      <video autoplay loop muted class="enjoy__video" width="1360">
-        <source src="img/video.mp4" type="video/mp4">
-      </video>
-      <div class="enjoy__inner">
-        <h1 class="enjoy__title">
-          <strong class="accent">Enjoy</strong> premium coffee at our charming
-          cafe
-        </h1>
-        <p class="enjoy__description">
-          With its inviting atmosphere and delicious coffee options, the
-          Coffee House Resource is a popular destination for coffee lovers and
-          those seeking a warm and inviting space to enjoy their favorite
-          beverage.
-        </p>
-        <a href="menu.html" class="enjoy__link">Menu</a>
-      </div>
-    </section>
-    <section class="favourite-coffee" id="favourite">
-      <h2 class="favourite-coffee__title">
-        Choose your <strong class="accent">favorite</strong> coffee
-      </h2>
-      <div class="slider">
-        <div class="slider__buttons">
-          <button class="slider__button" id="prev-btn">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <g id="arrow-left">
-                <path id="Vector" d="M18.5 12H6M6 12L12 6M6 12L12 18" stroke="#403F3D" stroke-linecap="round"
-                  stroke-linejoin="round" />
-              </g>
-            </svg>
-          </button>
-          <button class="slider__button" id="next-btn">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <g id="arrow-right">
-                <path id="Vector1" d="M6 12H18.5M18.5 12L12.5 6M18.5 12L12.5 18" stroke="#403F3D" stroke-linecap="round"
-                  stroke-linejoin="round" />
-              </g>
-            </svg>
-          </button>
-        </div>
-        <div class="slider__content">
-          <div class="slider-window">
-            <div class="slider-cards">
-              <div class="slider-card">
-                <img width="480" src="img/coffee-slider-1.png" alt="" class="slider__img">
-                <h3 class="slider__title">S’mores Frappuccino</h3>
-                <p class="slider__description">
-                  This new drink takes an espresso and mixes it with brown sugar and
-                  cinnamon before being topped with oat milk.
-                </p>
-                <h3 class="slider__price">$5.50</h3>
-              </div>
-              <div class="slider-card">
-                <img width="480" src="img/coffee-slider-2.png" alt="" class="slider__img">
-                <h3 class="slider__title">Caramel Macchiato</h3>
-                <p class="slider__description">
-                  Fragrant and unique classic espresso with rich caramel-peanut syrup, with cream under whipped thick
-                  foam.
-                </p>
-                <h3 class="slider__price">$5.00</h3>
-              </div>
-              <div class="slider-card">
-                <img width="480" src="img/coffee-slider-3.png" alt="" class="slider__img">
-                <h3 class="slider__title">Ice coffee</h3>
-                <p class="slider__description">
-                  A popular summer drink that tones and invigorates. Prepared from coffee, milk and ice.
-                </p>
-                <h3 class="slider__price">$4.50</h3>
+    <section class="cart">
+      <h1 class="cart__title">Cart</h1>
+      <ul class="cart-items">
+        <template id="cart-item-template">
+          <li class="cart-items__item item">
+            <button class="item__delete-btn"></button>
+            <span class="item__quantity"></span>
+            <div class="item__card">
+              <img class="item__img" src="" alt="">
+              <div class="item__inner">
+                <h3 class="item__title"></h3>
+                <span class="item__info"></span>
               </div>
             </div>
-          </div>
-        </div>
-        <ul class="slider__pagination">
-          <li class="slider__pagination-item"></li>
-          <li class="slider__pagination-item"></li>
-          <li class="slider__pagination-item"></li>
-        </ul>
+            <div class="item__prices">
+              <span class="item__price item__price--old"></span>
+              <span class="item__price item__price--cur"></span>
+            </div>
+          </li>
+        </template>
+      </ul>
+      <div class="total">
+        <h2 class="total__title">Total:</h2>
+        <span class="total__price">$20</span>
       </div>
-    </section>
-    <section class="about" id="about">
-      <h2 class="about__title">
-        Resource is
-        <strong class="accent">the perfect and cozy place</strong> where you
-        can enjoy a variety of hot beverages, relax, catch up with friends, or
-        get some work done.
-      </h2>
-      <div class="gallery">
-        <div class="gallery__inner">
-          <div class="gallery__item gallery__item--big">
-            <img src="img/about-1.jpg" alt="">
-          </div>
-          <div class="gallery__item">
-            <img src="img/about-2.jpg" alt="">
-          </div>
-        </div>
-        <div class="gallery__inner">
-          <div class="gallery__item">
-            <img src="img/about-3.jpg" alt="">
-          </div>
-          <div class="gallery__item gallery__item--big">
-            <img src="img/about-4.jpg" alt="">
-          </div>
-        </div>
+      <div class="auth-btns">
+        <a class="auth-btns__btn" href="sign-in.html">Sign in</a>
+        <a class="auth-btns__btn" href="registration.html">Registration</a>
       </div>
-    </section>
-    <section class="app" id="app">
-      <div class="app__info">
-        <h2 class="app__title">
-          <strong class="accent">Download</strong> our apps to start ordering
-        </h2>
-        <p class="app__description">
-          Download the Resource app today and experience the comfort of
-          ordering your favorite coffee from wherever you are
-        </p>
-        <div class="app__links">
-          <a href="" class="app__link">
-            <div class="app__link-icon">
-              <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g id="icon1">
-                  <g id="Icon1">
-                    <g id="Vector2">
-                      <path
-                        d="M26.7073 18.6307C26.6704 14.6324 30.065 12.6872 30.2203 12.5966C28.2977 9.86366 25.3178 9.49026 24.2707 9.46048C21.7679 9.20369 19.3403 10.9206 18.0654 10.9206C16.765 10.9206 14.8017 9.48529 12.6858 9.52747C9.96293 9.56841 7.41566 11.1055 6.0186 13.4923C3.13542 18.359 5.28572 25.5108 8.04802 29.4446C9.42981 31.3712 11.0444 33.5223 13.1578 33.4466C15.2254 33.3635 15.9978 32.1614 18.4929 32.1614C20.9651 32.1614 21.6903 33.4466 23.8457 33.3983C26.0647 33.3635 27.4618 31.463 28.7952 29.519C30.392 27.3108 31.0333 25.1362 31.0588 25.0245C31.0066 25.0071 26.7493 23.4229 26.7073 18.6307Z"
-                        fill="#403F3D" />
-                      <path
-                        d="M22.6357 6.87268C23.7477 5.51675 24.5086 3.67205 24.2974 1.80005C22.6879 1.86952 20.675 2.88554 19.5159 4.21169C18.4903 5.38029 17.5742 7.29571 17.8109 9.097C19.6189 9.2285 21.4753 8.20752 22.6357 6.87268Z"
-                        fill="#403F3D" />
-                    </g>
-                  </g>
-                </g>
-              </svg>
-            </div>
-            <div class="app__link-txt">
-              <span class="app__link-subtxt">Available on the</span>
-              <span class="app__link-subtitle">App Store</span>
-            </div>
-          </a>
-          <a href="" class="app__link">
-            <div class="app__link-icon">
-              <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g id="icon2">
-                  <g id="Icon2">
-                    <path id="Vector3"
-                      d="M3.7558 3.20297C3.39335 3.57289 3.18359 4.14884 3.18359 4.89471V31.4994C3.18359 32.2453 3.39335 32.8212 3.7558 33.1911L3.84525 33.2723L19.1359 18.37V18.0181L3.84525 3.11575L3.7558 3.20297Z"
-                      fill="#403F3D" />
-                    <path id="Vector_4"
-                      d="M26.0776 23.34L20.9863 18.37V18.0181L26.0837 13.0482L26.1979 13.1128L32.2345 16.4617C33.9573 17.4121 33.9573 18.976 32.2345 19.9324L26.1979 23.2753L26.0776 23.34Z"
-                      fill="#403F3D" />
-                    <path id="Vector_5"
-                      d="M25.2733 24.2007L20.0617 19.1195L4.68164 34.1166C5.25384 34.7031 6.18695 34.7737 7.24807 34.1873L25.2733 24.2007Z"
-                      fill="#403F3D" />
-                    <path id="Vector_6"
-                      d="M25.2733 12.1876L7.24807 2.20103C6.18695 1.62058 5.25384 1.69125 4.68164 2.27772L20.0617 17.2688L25.2733 12.1876Z"
-                      fill="#403F3D" />
-                  </g>
-                </g>
-              </svg>
-            </div>
-            <div class="app__link-txt">
-              <span class="app__link-subtxt">Available on</span>
-              <span class="app__link-subtitle">Google Play</span>
-            </div>
-          </a>
-        </div>
-      </div>
-      <img src="img/mobile-screens.png" alt="" class="app__img">
     </section>
   </main>
   <footer class="footer container">
@@ -298,7 +160,7 @@
           <a href="" class="socials__link"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
               xmlns="http://www.w3.org/2000/svg">
               <g id="twitter">
-                <path id="Vector7"
+                <path id="Vector"
                   d="M23 3.01006C23 3.01006 20.9821 4.20217 19.86 4.54006C19.2577 3.84757 18.4573 3.35675 17.567 3.13398C16.6767 2.91122 15.7395 2.96725 14.8821 3.29451C14.0247 3.62177 13.2884 4.20446 12.773 4.96377C12.2575 5.72309 11.9877 6.62239 12 7.54006V8.54006C10.2426 8.58562 8.50127 8.19587 6.93101 7.4055C5.36074 6.61513 4.01032 5.44869 3 4.01006C3 4.01006 -1 13.0101 8 17.0101C5.94053 18.408 3.48716 19.109 1 19.0101C10 24.0101 21 19.0101 21 7.51006C20.9991 7.23151 20.9723 6.95365 20.92 6.68006C21.9406 5.67355 23 3.01006 23 3.01006Z"
                   stroke="#E1D4C9" stroke-linecap="round" stroke-linejoin="round" />
               </g>
@@ -309,13 +171,13 @@
           <a href="" class="socials__link"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
               xmlns="http://www.w3.org/2000/svg">
               <g id="instagram">
-                <path id="Vector8"
+                <path id="Vector1"
                   d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z"
                   stroke="#E1D4C9" stroke-linecap="round" stroke-linejoin="round" />
-                <path id="Vector_9"
+                <path id="Vector_2"
                   d="M3 16V8C3 5.23858 5.23858 3 8 3H16C18.7614 3 21 5.23858 21 8V16C21 18.7614 18.7614 21 16 21H8C5.23858 21 3 18.7614 3 16Z"
                   stroke="#E1D4C9" />
-                <path id="Vector_10" d="M17.5 6.51L17.51 6.49889" stroke="#E1D4C9" stroke-linecap="round"
+                <path id="Vector_3" d="M17.5 6.51L17.51 6.49889" stroke="#E1D4C9" stroke-linecap="round"
                   stroke-linejoin="round" />
               </g>
             </svg>
@@ -325,7 +187,7 @@
           <a href="" class="socials__link"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
               xmlns="http://www.w3.org/2000/svg">
               <g id="facebook">
-                <path id="Vector11"
+                <path id="Vector4"
                   d="M17 2H14C12.6739 2 11.4021 2.52678 10.4645 3.46447C9.52678 4.40215 9 5.67392 9 7V10H6V14H9V22H13V14H16L17 10H13V7C13 6.73478 13.1054 6.48043 13.2929 6.29289C13.4804 6.10536 13.7348 6 14 6H17V2Z"
                   stroke="#E1D4C9" stroke-linecap="round" stroke-linejoin="round" />
               </g>
@@ -340,11 +202,11 @@
       <ul class="contact-list">
         <li class="contact-list__item">
           <a href="https://maps.app.goo.gl/xRpEvugcorMJivED8" class="contact-list__link contact-list__link--adress"
-            target="_blank">8558
-            Green Rd., LA</a>
+            target="_blank">8558 Green Rd., LA</a>
         </li>
         <li class="contact-list__item">
-          <a href="tel:+1(603)555-0123" class="contact-list__link contact-list__link--tel">+1 (603) 555-0123</a>
+          <a href="tel:+1(603)555-0123" class="contact-list__link contact-list__link--tel">+1 (603)
+            555-0123</a>
         </li>
         <li class="contact-list__item">
           <a href="" class="contact-list__link contact-list__link--hours">Mon-Sat: 9:00 AM – 23:00 PM</a>
@@ -352,8 +214,9 @@
       </ul>
     </section>
   </footer>
-  <script type="module" src="scripts/slider.ts"></script>
+
   <script type="module" src="scripts/script.js"></script>
+  <script type="module" src="scripts/cards.js"></script>
 </body>
 
 </html>
