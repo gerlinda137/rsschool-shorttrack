@@ -50,3 +50,25 @@ export interface SingleProductResponse {
   message: string;
   error: string;
 }
+
+// export interface CartItem {
+//   productId: string;
+//   size: string;
+//   additives: string[];
+//   quantity: number;
+// }
+
+// export interface CartItems {
+//   items: CartItem[];
+//   totalPrice: number;
+// }
+
+export interface CartItemLocal {
+  productId: string;
+  name: string;
+  size: string;
+  additives: string[];
+  quantity: number;
+  price: number;
+  totalItemPrice: number;
+}

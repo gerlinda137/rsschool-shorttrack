@@ -1,5 +1,6 @@
-import { Product, SingleProduct, Sizes } from "./interfaces";
+import { CartItemLocal, Product, SingleProduct, Sizes } from "./interfaces";
 import { getAllProducts, getSingleProduct } from "./api";
+import { addToCartLocal } from "./cart";
 
 let jsonData: Product[] = [];
 const tabsContainer = document.querySelector(".tabs") as HTMLDivElement;
@@ -204,6 +205,7 @@ function generatePopup(productData: SingleProduct): void {
     ".popup__btns--size"
   ) as HTMLDivElement;
   const btnsSize = btnsSizeContainer.querySelectorAll<HTMLElement>(".checkbox");
+  const btnsSizeInputs = [] as HTMLInputElement[];
 
   for (let i = 0; i < btnsSize.length; i++) {
     const button = btnsSize[i];
@@ -211,6 +213,7 @@ function generatePopup(productData: SingleProduct): void {
       ".checkbox__label"
     ) as HTMLLabelElement;
     const buttonInput = button.querySelector("input") as HTMLInputElement;
+    btnsSizeInputs.push(buttonInput);
     if (buttonLabel && buttonInput) {
       const inputId = buttonInput.id as keyof Sizes;
       if (productData.sizes[inputId]) {
@@ -224,6 +227,7 @@ function generatePopup(productData: SingleProduct): void {
   ) as HTMLDivElement;
   const btnsAdd =
     btnsAddContainer.querySelectorAll<HTMLDivElement>(".checkbox");
+  const btnsAddsInputs = [] as HTMLInputElement[];
 
   for (let i = 0; i < btnsAdd.length; i++) {
     const button = btnsAdd[i];
@@ -231,6 +235,7 @@ function generatePopup(productData: SingleProduct): void {
       ".checkbox__label"
     ) as HTMLLabelElement;
     const buttonInput = button.querySelector("input") as HTMLInputElement;
+    btnsAddsInputs.push(buttonInput);
     if (buttonLabel && buttonInput) {
       const inputId = parseInt(buttonInput.id);
       if (productData.additives[inputId]) {
@@ -262,8 +267,18 @@ function generatePopup(productData: SingleProduct): void {
 
   if (popupAddToCart) {
     popupAddToCart.addEventListener("click", () => {
-      popupAppended.remove();
-      root.classList.remove("no-scroll");
+      const selectedData = gatherSelectedOptions(
+        productData,
+        btnsSizeInputs,
+        btnsAddsInputs
+      );
+      addToCartLocal(selectedData);
+      popupAddToCart.textContent = "✓ Added!";
+      popupAddToCart.style.backgroundColor = "#4da750b3";
+      setTimeout(() => {
+        popupAppended.remove();
+        root.classList.remove("no-scroll");
+      }, 500);
     });
   }
 
@@ -342,6 +357,80 @@ function calcPrice(productData: SingleProduct) {
       }
     }
   }
+}
+
+function getSelectedSize(sizes: HTMLInputElement[]): string | null {
+  for (const size of sizes) {
+    if (size.checked) {
+      return size.id;
+    }
+  }
+  return null;
+}
+
+function getSelectedAdditives(
+  adds: HTMLInputElement[]
+): { id: string; name: string }[] {
+  const selectedAdditives: { id: string; name: string }[] = [];
+  for (const add of adds) {
+    if (add.checked) {
+      selectedAdditives.push({ id: add.id, name: add.name });
+    }
+  }
+  return selectedAdditives;
+}
+
+function calculateTotalPrice(
+  productData: SingleProduct,
+  selectedSize: string | null,
+  selectedAdditives: { id: string; name: string }[]
+): number {
+  let price = 0;
+
+  if (selectedSize) {
+    price += Number(productData.sizes[selectedSize as keyof Sizes].price);
+  }
+
+  for (const additiveId of selectedAdditives) {
+    const index = parseInt(additiveId.id);
+    price += Number(productData.additives[index].price);
+  }
+
+  return price;
+}
+
+function getSelectedAdditivesList(
+  selectedAdds: { id: string; name: string }[]
+) {
+  const selectedAddsList = [];
+  for (const add of selectedAdds) {
+    selectedAddsList.push(add.name);
+  }
+  return selectedAddsList;
+}
+
+function gatherSelectedOptions(
+  productData: SingleProduct,
+  sizes: HTMLInputElement[],
+  adds: HTMLInputElement[]
+): CartItemLocal {
+  const selectedSize = getSelectedSize(sizes);
+  const selectedAdditives = getSelectedAdditives(adds);
+  const totalPrice = calculateTotalPrice(
+    productData,
+    selectedSize,
+    selectedAdditives
+  );
+  const selectedAdditivesList = getSelectedAdditivesList(selectedAdditives);
+  return {
+    productId: productData.id,
+    name: productData.name,
+    size: selectedSize || "s",
+    additives: selectedAdditivesList,
+    quantity: 1,
+    price: totalPrice,
+    totalItemPrice: totalPrice,
+  };
 }
 
 initialCardsLoad();

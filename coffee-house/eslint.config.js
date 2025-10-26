@@ -15,6 +15,7 @@ export default [
       globals: {
         ...globals.browser,
         ...globals.es2020,
+        NodeListOf: "readonly",
       },
     },
     plugins: {
