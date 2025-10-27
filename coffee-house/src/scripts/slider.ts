@@ -127,7 +127,7 @@ function generateSliderCards(products: FavoriteProduct[]): void {
     ) as HTMLParagraphElement;
     const price = clone.querySelector(".slider__price") as HTMLHeadingElement;
 
-    img.src = `img/cards/${product.name}.jpg`;
+    img.src = `img/cards-nobg/${product.name}.png`;
     img.alt = `${product.name} image`;
     title.textContent = product.name;
     description.textContent = product.description;
