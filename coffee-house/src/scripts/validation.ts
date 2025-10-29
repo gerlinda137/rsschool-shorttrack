@@ -100,3 +100,40 @@ export function validateDropdown(
   error.textContent = "";
   return true;
 }
+
+export function isFormValid(): boolean {
+  const fields = [
+    { selector: ".input--login", type: "input" },
+    { selector: ".input--password", type: "input" },
+    { selector: ".input--password-confirm", type: "input" },
+    { selector: ".input--house", type: "input" },
+    { selector: ".input--city", type: "dropdown" },
+    { selector: ".input--street", type: "dropdown" },
+  ];
+
+  for (const field of fields) {
+    const element = document.querySelector(field.selector) as HTMLElement;
+
+    if (field.type === "input") {
+      const input = element.querySelector("input") as HTMLInputElement;
+      if (!input.value.trim()) return false;
+    } else if (field.type === "dropdown") {
+      const toggle = element.querySelector(
+        ".input__dropdown-toggle"
+      ) as HTMLButtonElement;
+      const text = element.querySelector(
+        ".input__dropdown-text"
+      ) as HTMLSpanElement;
+
+      if (
+        !toggle.disabled &&
+        (text.textContent === "Select city" ||
+          text.textContent === "Select street")
+      ) {
+        return false;
+      }
+    }
+  }
+
+  return true;
+}

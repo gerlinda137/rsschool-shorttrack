@@ -1,4 +1,6 @@
+import { insertLoader } from "./loader";
 import {
+  isFormValid,
   // validateDropdown,
   validateHouseNumber,
   validateLogin,
@@ -140,7 +142,6 @@ function updateStreets(city: string | null): void {
     ".input__dropdown-text"
   ) as HTMLSpanElement;
 
-  // Очищаем и сбрасываем выбор
   streetMenu.innerHTML = "";
   streetText.textContent = "Select street";
   streetText.style.color = "";
@@ -155,7 +156,7 @@ function updateStreets(city: string | null): void {
 
   streetToggle.disabled = false;
 
-  // Добавляем новые улицы
+  // новые улицы
   const streets = streetData[city as keyof typeof streetData] || [];
   streets.forEach((street) => {
     const li = document.createElement("li");
@@ -224,7 +225,136 @@ function initializeDropdowns(): void {
     });
   });
 }
+function updateRegisterButton(): void {
+  const registerBtn = document.querySelector(
+    ".registration-form__submit"
+  ) as HTMLButtonElement;
+  registerBtn.disabled = !isFormValid();
+}
+
+function initializeFormValidation(): void {
+  const inputs = document.querySelectorAll(
+    "input"
+  ) as NodeListOf<HTMLInputElement>;
+  const dropdowns = document.querySelectorAll(
+    ".input--dropdown"
+  ) as NodeListOf<HTMLDivElement>;
+
+  inputs.forEach((input) => {
+    input.addEventListener("input", updateRegisterButton);
+    input.addEventListener("blur", updateRegisterButton);
+  });
+
+  dropdowns.forEach((dropdown) => {
+    const toggle = dropdown.querySelector(
+      ".input__dropdown-toggle"
+    ) as HTMLButtonElement;
+    toggle.addEventListener("click", updateRegisterButton);
+
+    dropdown.addEventListener("click", (e) => {
+      if (
+        (e.target as HTMLElement).classList.contains("input__dropdown-item")
+      ) {
+        setTimeout(updateRegisterButton, 10);
+      }
+    });
+  });
+
+  updateRegisterButton();
+}
+function collectFormData() {
+  const loginInput = document.querySelector(
+    ".input--login input"
+  ) as HTMLInputElement;
+  const passwordInput = document.querySelector(
+    ".input--password input"
+  ) as HTMLInputElement;
+  const confirmPasswordInput = document.querySelector(
+    ".input--password-confirm input"
+  ) as HTMLInputElement;
+  const cityText = document.querySelector(
+    ".input--city .input__dropdown-text"
+  ) as HTMLSpanElement;
+  const streetText = document.querySelector(
+    ".input--street .input__dropdown-text"
+  ) as HTMLSpanElement;
+  const houseInput = document.querySelector(
+    ".input--house input"
+  ) as HTMLInputElement;
+  const paymentRadio = document.querySelector(
+    'input[name="payment"]:checked'
+  ) as HTMLInputElement;
+
+  const login = loginInput?.value || "";
+  const password = passwordInput?.value || "";
+  const confirmPassword = confirmPasswordInput?.value || "";
+  const city = cityText?.textContent || "";
+  const street = streetText?.textContent || "";
+  const houseNumber = parseInt(houseInput?.value || "0");
+  const paymentMethod = paymentRadio?.value || "cash";
+
+  return {
+    login,
+    password,
+    confirmPassword,
+    city,
+    street,
+    houseNumber,
+    paymentMethod,
+  };
+}
+
+const registerBtn = document.querySelector(
+  ".registration-form__submit"
+) as HTMLButtonElement;
+
+registerBtn.addEventListener("click", async (e) => {
+  e.preventDefault();
+  const formData = collectFormData();
+  const requestMessage = document.querySelector(".registration__message");
+  const container = document.querySelector(".registration") as HTMLElement;
+
+  try {
+    const loader = insertLoader(container);
+    const response = await fetch(
+      "https://6kt29kkeub.execute-api.eu-central-1.amazonaws.com/auth/register",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      }
+    );
+
+    if (response.ok) {
+      if (loader) {
+        loader.remove();
+      }
+      console.log("Registration successful!");
+      if (requestMessage) {
+        requestMessage.textContent = "Registration successful!";
+        requestMessage?.classList.add("registration__message--success");
+      }
+    } else {
+      if (loader) {
+        loader.remove();
+      }
+      console.error("Registration failed");
+
+      if (requestMessage) {
+        requestMessage.textContent = "Registration failed!";
+        requestMessage?.classList.add("registration__message--fail");
+      }
+    }
+  } catch (error) {
+    console.error("Network error:", error);
+    if (requestMessage) {
+      requestMessage.textContent = `Network error: ${error}`;
+      requestMessage?.classList.add("registration__message--fail");
+    }
+  }
+});
 
 document.addEventListener("DOMContentLoaded", () => {
   initializeDropdowns();
+  initializeFormValidation();
 });

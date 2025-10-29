@@ -122,73 +122,77 @@
     <section class="registration">
       <h1 class="registration__title">Registration</h1>
       <form class="registration-form">
-        <div class="input input--login">
-          <label for="input-login" class="input__label">Login</label>
-          <input type="text" id="input-login" name="input-login" class="input__input" placeholder="Placeholder">
-          <img src="img/icons/error.svg" alt="error-icon">
-          <span class="input__error">Error message appears here</span>
-        </div>
-        <div class="input input--password">
-          <label for="input-password" class="input__label">Password</label>
-          <input type="password" id="input-password" name="input-password" class="input__input"
-            placeholder="Placeholder">
-          <span class="input__error">Error message appears here</span>
-        </div>
-        <div class="input input--password-confirm">
-          <label for="input-password-confirm" class="input__label">Confirm Password</label>
-          <input type="password" id="input-password-confirm" name="input-password-confirm" class="input__input"
-            placeholder="Placeholder">
-          <span class="input__error">Error message appears here</span>
-        </div>
-        <div class="input input--dropdown input--city input--min">
-          <label class="input__label">City</label>
-          <button type="button" class="input__dropdown-toggle">
-            <span class="input__dropdown-text">Select city</span>
-            <span class="input__dropdown-arrow">▼</span>
-          </button>
-          <ul class="input__dropdown-menu">
-            <li class="input__dropdown-item" data-value="new-york">New York</li>
-            <li class="input__dropdown-item" data-value="london">London</li>
-            <li class="input__dropdown-item" data-value="tokyo">Tokyo</li>
-          </ul>
-          <span class="input__error">Error message appears here</span>
-        </div>
-        <div class="input input--dropdown input--street input--min">
-          <label class="input__label">Street</label>
-          <button type="button" class="input__dropdown-toggle" disabled>
-            <span class="input__dropdown-text">Select street</span>
-            <span class="input__dropdown-arrow">▼</span>
-          </button>
-          <ul class="input__dropdown-menu">
-            <li class="input__dropdown-item" data-value="new-york">New York</li>
-            <li class="input__dropdown-item" data-value="london">London</li>
-            <li class="input__dropdown-item" data-value="tokyo">Tokyo</li>
-          </ul>
-          <span class="input__error">Error message appears here</span>
-        </div>
-        <div class="input input--house input--min">
-          <label for="input-house" class="input__label">House number</label>
-          <input type="number" id="input-house" name="input-house" class="input__input" placeholder="Placeholder">
-          <span class="input__error">Error message appears here</span>
-        </div>
-        <div class="input input--pay input--min">
-          <label for="input-house" class="input__label">Pay by</label>
-          <div class="input__radios">
-            <div class="payment-options">
-              <label class="radio-container">
-                <input type="radio" name="payment" value="cash" checked />
-                <span class="custom-radio"></span>
-                Cash
-              </label>
+        <div class="registration-form__inner">
+          <div class="input input--login">
+            <label for="input-login" class="input__label">Login</label>
+            <input type="text" id="input-login" name="input-login" class="input__input" placeholder="Placeholder">
+            <img src="img/icons/error.svg" alt="error-icon">
+            <span class="input__error">Error message appears here</span>
+          </div>
+          <div class="input input--password">
+            <label for="input-password" class="input__label">Password</label>
+            <input type="password" id="input-password" name="input-password" class="input__input"
+              placeholder="Placeholder">
+            <span class="input__error">Error message appears here</span>
+          </div>
+          <div class="input input--password-confirm">
+            <label for="input-password-confirm" class="input__label">Confirm Password</label>
+            <input type="password" id="input-password-confirm" name="input-password-confirm" class="input__input"
+              placeholder="Placeholder">
+            <span class="input__error">Error message appears here</span>
+          </div>
+          <div class="input input--dropdown input--city input--min">
+            <label class="input__label">City</label>
+            <button type="button" class="input__dropdown-toggle">
+              <span class="input__dropdown-text">Select city</span>
+              <span class="input__dropdown-arrow">▼</span>
+            </button>
+            <ul class="input__dropdown-menu">
+              <li class="input__dropdown-item" data-value="new-york">New York</li>
+              <li class="input__dropdown-item" data-value="london">London</li>
+              <li class="input__dropdown-item" data-value="tokyo">Tokyo</li>
+            </ul>
+            <span class="input__error">Error message appears here</span>
+          </div>
+          <div class="input input--dropdown input--street input--min">
+            <label class="input__label">Street</label>
+            <button type="button" class="input__dropdown-toggle" disabled>
+              <span class="input__dropdown-text">Select street</span>
+              <span class="input__dropdown-arrow">▼</span>
+            </button>
+            <ul class="input__dropdown-menu">
+              <li class="input__dropdown-item" data-value="new-york">New York</li>
+              <li class="input__dropdown-item" data-value="london">London</li>
+              <li class="input__dropdown-item" data-value="tokyo">Tokyo</li>
+            </ul>
+            <span class="input__error">Error message appears here</span>
+          </div>
+          <div class="input input--house input--min">
+            <label for="input-house" class="input__label">House number</label>
+            <input type="number" id="input-house" name="input-house" class="input__input" placeholder="Placeholder">
+            <span class="input__error">Error message appears here</span>
+          </div>
+          <div class="input input--pay input--min">
+            <label for="input-house" class="input__label">Pay by</label>
+            <div class="input__radios">
+              <div class="payment-options">
+                <label class="radio-container">
+                  <input type="radio" name="payment" value="cash" checked />
+                  <span class="custom-radio"></span>
+                  Cash
+                </label>
 
-              <label class="radio-container">
-                <input type="radio" name="payment" value="card" />
-                <span class="custom-radio"></span>
-                Card
-              </label>
+                <label class="radio-container">
+                  <input type="radio" name="payment" value="card" />
+                  <span class="custom-radio"></span>
+                  Card
+                </label>
+              </div>
             </div>
           </div>
         </div>
+        <button class="registration-form__submit" disabled>Registration</button>
+        <span class="registration__message"></span>
       </form>
     </section>
   </main>
