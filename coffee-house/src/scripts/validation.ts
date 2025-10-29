@@ -68,3 +68,20 @@ export function validatePasswordConfirm(
 
   return { isValid: true, message: "" };
 }
+
+export function validateHouseNumber(value: string): {
+  isValid: boolean;
+  message: string;
+} {
+  const trimmedValue = value.trim();
+  const numericValue = Number(trimmedValue);
+
+  if (isNaN(numericValue) || numericValue <= 1) {
+    return {
+      isValid: false,
+      message: "House number must be a number greater than 1",
+    };
+  }
+
+  return { isValid: true, message: "" };
+}
