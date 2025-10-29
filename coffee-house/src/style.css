@@ -8,6 +8,8 @@
   --txt-light: #E1D4C9;
   --border-light: #C1B6AD;
   --border-dark: #665F55;
+  --placeholder: #A1A8B3;
+  --error: rgb(226, 31, 31);
 }
 
 *,
@@ -1292,6 +1294,95 @@ p {
 
 .hidden {
   display: none;
+}
+
+/*Registration*/
+
+.registration {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.registration__title {
+  margin-bottom: 40px;
+  font-size: 60px;
+}
+
+.registration-form {
+  display: flex;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  width: 100%;
+  position: relative;
+}
+
+.input img {
+  display: none;
+}
+
+.input__label {
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.input__input {
+  border: 1px solid var(--border-light);
+  padding: 16px 12px;
+  border-radius: 12px;
+  background-color: transparent;
+}
+
+.input__input::-webkit-input-placeholder {
+  color: var(--placeholder);
+}
+
+.input__input::-moz-placeholder {
+  color: var(--placeholder);
+}
+
+.input__input:-ms-input-placeholder {
+  color: var(--placeholder);
+}
+
+.input__input::-ms-input-placeholder {
+  color: var(--placeholder);
+}
+
+.input__input::placeholder {
+  color: var(--placeholder);
+}
+
+.input__error {
+  display: none;
+  color: var(--error);
+  font-size: 12px;
+}
+
+.input.error .input__error {
+  display: inline-block;
+}
+
+.input.error .input__input {
+  border-color: var(--error);
+}
+
+.input.error img {
+  display: block;
+  width: 24px;
+  height: 24px;
+  color: var(--error);
+  position: absolute;
+  right: 10px;
+  top: 40%;
 }
 
 /*tablet*/
