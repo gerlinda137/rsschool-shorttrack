@@ -333,6 +333,9 @@ registerBtn.addEventListener("click", async (e) => {
       if (requestMessage) {
         requestMessage.textContent = "Registration successful!";
         requestMessage?.classList.add("registration__message--success");
+        setTimeout(() => {
+          window.location.href = "./cart.html";
+        }, 2000);
       }
     } else {
       if (loader) {
