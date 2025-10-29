@@ -85,3 +85,18 @@ export function validateHouseNumber(value: string): {
 
   return { isValid: true, message: "" };
 }
+
+export function validateDropdown(
+  selectedValue: string | null,
+  dropdown: HTMLDivElement,
+  error: HTMLSpanElement
+): boolean {
+  if (!selectedValue) {
+    dropdown.classList.add("error");
+    error.textContent = "This field is required";
+    return false;
+  }
+  dropdown.classList.remove("error");
+  error.textContent = "";
+  return true;
+}

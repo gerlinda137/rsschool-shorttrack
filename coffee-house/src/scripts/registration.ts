@@ -1,4 +1,5 @@
 import {
+  validateDropdown,
   validateHouseNumber,
   validateLogin,
   validatePassword,
@@ -79,5 +80,42 @@ houseInput?.addEventListener("blur", () => {
     }
   } else {
     houseContainer?.classList.remove("error");
+  }
+});
+
+//city
+const dropdown = document.querySelector(".input--dropdown") as HTMLDivElement;
+const toggle = dropdown.querySelector(
+  ".input__dropdown-toggle"
+) as HTMLButtonElement;
+const menu = dropdown.querySelector(
+  ".input__dropdown-menu"
+) as HTMLUListElement;
+const items = dropdown.querySelectorAll(
+  ".input__dropdown-item"
+) as NodeListOf<HTMLLIElement>;
+const error = dropdown.querySelector(".input__error") as HTMLSpanElement;
+const text = dropdown.querySelector(".input__dropdown-text") as HTMLSpanElement;
+
+let selectedValue: string | null = null;
+
+toggle.addEventListener("click", () => {
+  menu.classList.toggle("show");
+});
+
+items.forEach((item) => {
+  item.addEventListener("click", () => {
+    selectedValue = item.dataset.value || null;
+    text.textContent = item.textContent || "";
+    text.style.color = "var(--txt)";
+    menu.classList.remove("show");
+    validateDropdown(selectedValue, dropdown, error);
+  });
+});
+
+document.addEventListener("click", (e) => {
+  if (!dropdown.contains(e.target as Node)) {
+    menu.classList.remove("show");
+    validateDropdown(selectedValue, dropdown, error);
   }
 });
