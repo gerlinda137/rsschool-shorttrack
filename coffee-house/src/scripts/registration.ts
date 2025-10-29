@@ -1,12 +1,13 @@
 import { insertLoader } from "./loader";
 import {
   isFormValid,
-  // validateDropdown,
   validateHouseNumber,
   validateLogin,
   validatePassword,
   validatePasswordConfirm,
 } from "./validation";
+import { FormData } from "./interfaces";
+import { saveUserData } from "./user";
 
 const loginContainer = document.querySelector(".input--login");
 const loginInput = loginContainer?.querySelector("input");
@@ -262,7 +263,7 @@ function initializeFormValidation(): void {
 
   updateRegisterButton();
 }
-function collectFormData() {
+function collectFormData(): FormData {
   const loginInput = document.querySelector(
     ".input--login input"
   ) as HTMLInputElement;
@@ -332,6 +333,7 @@ registerBtn.addEventListener("click", async (e) => {
       console.log("Registration successful!");
       if (requestMessage) {
         requestMessage.textContent = "Registration successful!";
+        saveUserData(formData);
         requestMessage?.classList.add("registration__message--success");
         setTimeout(() => {
           window.location.href = "./cart.html";

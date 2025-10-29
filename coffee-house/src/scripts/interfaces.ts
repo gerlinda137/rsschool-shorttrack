@@ -73,3 +73,33 @@ export interface FavoriteProduct {
 export interface FavoritesResponse {
   data: FavoriteProduct[];
 }
+
+export interface FormData {
+  login: string;
+  password: string;
+  confirmPassword: string;
+  city: string;
+  street: string;
+  houseNumber: number;
+  paymentMethod: string;
+}
+
+export interface UserData {
+  login: string;
+  city: string;
+  street: string;
+  houseNumber: number;
+  paymentMethod: string;
+}
+
+interface OrderItem {
+  productId: number;
+  size: string;
+  additives: string[];
+  quantity: number;
+}
+
+export interface OrderData {
+  items: OrderItem[];
+  totalPrice: number;
+}

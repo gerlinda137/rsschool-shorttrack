@@ -1,10 +1,47 @@
+import { calcTotalPrice } from "./calcTotalPrice";
 import { getLocalCart, removeFromCart, updateCartInHeader } from "./cart";
+import { confirmOrder } from "./confirmOrder";
 import { CartItemLocal } from "./interfaces";
+import { getUserData } from "./user";
 const cartList = document.querySelector(".cart-items");
 const template = document.getElementById(
   "cart-item-template"
 ) as HTMLTemplateElement;
 const cartTotalPrice = document.querySelector(".cart-total__price");
+
+const authBtns = document.querySelector(".auth-btns");
+const authedInfo = document.querySelector(".authed-info") as HTMLDivElement;
+const authedAddress = authedInfo?.querySelector(
+  ".authed-info__address"
+) as HTMLSpanElement;
+const payMethod = authedInfo?.querySelector(".authed-info__pay");
+const confirmBtn = authedInfo?.querySelector(".authed-info__confirm");
+
+document.addEventListener("DOMContentLoaded", () => {
+  const userData = getUserData();
+  if (userData) {
+    authBtns?.classList.toggle("hidden");
+    authedInfo?.classList.toggle("hidden");
+    if (authedInfo) {
+      authedAddress.textContent = `${userData.city}, ${userData.street}, ${userData.houseNumber}`;
+    }
+    if (payMethod) {
+      payMethod.textContent = userData.paymentMethod;
+    }
+    confirmBtn?.addEventListener("click", (e) => {
+      e.preventDefault();
+      const cart = getLocalCart();
+      if (cart.length === 0) {
+        alert("Your cart is empty");
+        return;
+      }
+      confirmOrder();
+    });
+  } else {
+    authBtns?.classList.toggle("hidden");
+    authedInfo?.classList.toggle("hidden");
+  }
+});
 
 export function generateCartList(cartItems: CartItemLocal[]) {
   if (cartList) {
@@ -48,14 +85,6 @@ export function generateCartList(cartItems: CartItemLocal[]) {
     img.alt = `${cartItem.name} image`;
     cartList?.append(clone);
   }
-}
-
-export function calcTotalPrice(cart: CartItemLocal[]): string {
-  let total = 0;
-  for (const item of cart) {
-    total += item.totalItemPrice;
-  }
-  return total.toFixed(2);
 }
 
 const localCart = getLocalCart();

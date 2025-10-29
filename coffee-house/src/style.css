@@ -1158,6 +1158,7 @@ p {
   align-items: center;
   padding-top: 6px;
   width: 100%;
+  margin-bottom: 100px;
 }
 
 .cart-items {
@@ -1233,7 +1234,6 @@ p {
   justify-content: space-between;
   width: 100%;
   align-items: center;
-  margin-bottom: 40px;
   font-size: 24px;
   font-weight: 600;
   padding: 0 0px 0 48px;
@@ -1241,16 +1241,22 @@ p {
 
 .cart-total__title {
   font-size: inherit;
+  margin-bottom: 12px;
 }
 
 
 .auth-btns {
-  margin-bottom: 100px;
   display: flex;
   align-items: center;
   gap: 40px;
   width: 100%;
   justify-content: center;
+  margin-top: 40px;
+
+}
+
+.auth-btns.hidden {
+  display: none;
 }
 
 .auth-btns a {
@@ -1267,6 +1273,54 @@ p {
 }
 
 .auth-btns a:hover {
+  transition: all 0.7s;
+  background-color: var(--container);
+  color: var(--txt-light);
+}
+
+.authed-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.authed-info.hidden {
+  display: none;
+}
+
+.authed-info__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 0 0px 0 48px;
+}
+
+.authed-info__title,
+.authed-info__address,
+.authed-info__pay {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.authed-info__confirm {
+  color: inherit;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 10px 53px;
+  border: 1px solid var(--border-dark);
+  border-radius: 100px;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  transition: all 0.7s;
+}
+
+
+.authed-info__confirm:hover {
   transition: all 0.7s;
   background-color: var(--container);
   color: var(--txt-light);

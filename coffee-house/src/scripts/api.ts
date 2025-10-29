@@ -1,5 +1,6 @@
 import {
   FavoritesResponse,
+  OrderData,
   ProductsData,
   SingleProductResponse,
 } from "./interfaces";
@@ -52,5 +53,26 @@ export async function getFavProducts(): Promise<FavoritesResponse> {
   } catch (error) {
     console.log("failed to load favorite products" + error);
     throw new Error("failed to favorite load products" + error);
+  }
+}
+
+export async function confirmOrderApi(orderData: OrderData): Promise<boolean> {
+  try {
+    const response = await fetch(
+      "https://6kt29kkeub.execute-api.eu-central-1.amazonaws.com/orders/confirm",
+      {
+        method: "POST",
+        headers: {
+          accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(orderData),
+      }
+    );
+
+    return response.ok;
+  } catch (error) {
+    console.error("Network error:", error);
+    throw new Error("Failed to post your order" + error);
   }
 }
