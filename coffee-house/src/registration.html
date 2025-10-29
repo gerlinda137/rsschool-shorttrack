@@ -140,7 +140,7 @@
             placeholder="Placeholder">
           <span class="input__error">Error message appears here</span>
         </div>
-        <div class="input input--dropdown">
+        <div class="input input--dropdown input--city input--min">
           <label class="input__label">City</label>
           <button type="button" class="input__dropdown-toggle">
             <span class="input__dropdown-text">Select city</span>
@@ -153,10 +153,41 @@
           </ul>
           <span class="input__error">Error message appears here</span>
         </div>
-        <div class="input input--house">
+        <div class="input input--dropdown input--street input--min">
+          <label class="input__label">Street</label>
+          <button type="button" class="input__dropdown-toggle" disabled>
+            <span class="input__dropdown-text">Select street</span>
+            <span class="input__dropdown-arrow">▼</span>
+          </button>
+          <ul class="input__dropdown-menu">
+            <li class="input__dropdown-item" data-value="new-york">New York</li>
+            <li class="input__dropdown-item" data-value="london">London</li>
+            <li class="input__dropdown-item" data-value="tokyo">Tokyo</li>
+          </ul>
+          <span class="input__error">Error message appears here</span>
+        </div>
+        <div class="input input--house input--min">
           <label for="input-house" class="input__label">House number</label>
           <input type="number" id="input-house" name="input-house" class="input__input" placeholder="Placeholder">
           <span class="input__error">Error message appears here</span>
+        </div>
+        <div class="input input--pay input--min">
+          <label for="input-house" class="input__label">Pay by</label>
+          <div class="input__radios">
+            <div class="payment-options">
+              <label class="radio-container">
+                <input type="radio" name="payment" value="cash" checked />
+                <span class="custom-radio"></span>
+                Cash
+              </label>
+
+              <label class="radio-container">
+                <input type="radio" name="payment" value="card" />
+                <span class="custom-radio"></span>
+                Card
+              </label>
+            </div>
+          </div>
         </div>
       </form>
     </section>
