@@ -9,6 +9,9 @@ export async function confirmOrder(): Promise<void> {
   const cartContainer = document.querySelector(".cart") as HTMLDivElement;
   const cartItemsContainer = document.querySelector(".cart-items");
   const confirmBtn = document.querySelector(".authed-info__confirm");
+  const totalPriceSpan = document.querySelector(
+    ".cart-total__price"
+  ) as HTMLSpanElement;
 
   const orderData = {
     items: cart.map((item) => ({
@@ -50,6 +53,9 @@ export async function confirmOrder(): Promise<void> {
       }, 1000);
       if (cartItemsContainer) {
         cartItemsContainer.innerHTML = "";
+      }
+      if (totalPriceSpan) {
+        totalPriceSpan.textContent = "$0.00";
       }
 
       confirmBtn?.classList.add("hidden");
