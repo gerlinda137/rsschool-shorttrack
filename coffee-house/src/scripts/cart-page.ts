@@ -20,8 +20,8 @@ const confirmBtn = authedInfo?.querySelector(".authed-info__confirm");
 document.addEventListener("DOMContentLoaded", () => {
   const userData = getUserData();
   if (userData) {
-    authBtns?.classList.toggle("hidden");
-    authedInfo?.classList.toggle("hidden");
+    authBtns?.classList.add("hidden");
+    authedInfo?.classList.remove("hidden");
     if (authedInfo) {
       authedAddress.textContent = `${userData.city}, ${userData.street}, ${userData.houseNumber}`;
     }
@@ -38,8 +38,8 @@ document.addEventListener("DOMContentLoaded", () => {
       confirmOrder();
     });
   } else {
-    authBtns?.classList.toggle("hidden");
-    authedInfo?.classList.toggle("hidden");
+    authBtns?.classList.remove("hidden");
+    authedInfo?.classList.add("hidden");
   }
 });
 
@@ -88,6 +88,9 @@ export function generateCartList(cartItems: CartItemLocal[]) {
 }
 
 const localCart = getLocalCart();
+if (localCart.length === 0) {
+  document.querySelector(".authed-info__confirm")?.classList.add("hidden");
+}
 generateCartList(localCart);
 
 if (cartTotalPrice) {

@@ -918,6 +918,17 @@ p {
   border-radius: 40px;
 }
 
+.popup-success {
+  background-color: rgba(0, 128, 0, 0.659);
+  color: var(--txt-light);
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 1em 3em;
+  border-radius: 40px;
+}
+
 .popup__close-btn {
   width: 40px;
   height: 40px;
@@ -1306,6 +1317,7 @@ p {
 }
 
 .authed-info__confirm {
+  display: block;
   color: inherit;
   font-family: inherit;
   font-weight: 600;
@@ -1317,6 +1329,10 @@ p {
   width: -moz-max-content;
   width: max-content;
   transition: all 0.7s;
+}
+
+.authed-info__confirm.hidden {
+  display: none;
 }
 
 

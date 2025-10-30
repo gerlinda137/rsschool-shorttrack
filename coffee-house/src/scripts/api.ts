@@ -69,7 +69,9 @@ export async function confirmOrderApi(orderData: OrderData): Promise<boolean> {
         body: JSON.stringify(orderData),
       }
     );
-
+    if (!response.ok) {
+      throw new Error(`Failed to post your order: ${response.status}`);
+    }
     return response.ok;
   } catch (error) {
     console.error("Network error:", error);
