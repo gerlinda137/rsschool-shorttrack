@@ -11,9 +11,11 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/rsschool-shorttrack/coffee-house/assets/favicon-16x16-DdOMjLtT.png">
   <link rel="manifest" href="/rsschool-shorttrack/coffee-house/assets/site-BwHFeIBa.webmanifest">
   <title>Menu</title>
-  <script type="module" crossorigin src="/rsschool-shorttrack/coffee-house/assets/cart-D7JWkwY-.js"></script>
-  <link rel="modulepreload" crossorigin href="/rsschool-shorttrack/coffee-house/assets/script-CgKnqeHh.js">
-  <link rel="stylesheet" crossorigin href="/rsschool-shorttrack/coffee-house/assets/script-DlqGWo1A.css">
+  <script type="module" crossorigin src="/rsschool-shorttrack/coffee-house/assets/cart-BRgeEm9j.js"></script>
+  <link rel="modulepreload" crossorigin href="/rsschool-shorttrack/coffee-house/assets/loader-Dogjh2BV.js">
+  <link rel="modulepreload" crossorigin href="/rsschool-shorttrack/coffee-house/assets/api-BNdEVfLx.js">
+  <link rel="modulepreload" crossorigin href="/rsschool-shorttrack/coffee-house/assets/user-qEucg8qj.js">
+  <link rel="stylesheet" crossorigin href="/rsschool-shorttrack/coffee-house/assets/loader-B5_ekHrI.css">
 </head>
 
 <body>
@@ -149,6 +151,17 @@
       <div class="auth-btns">
         <a class="auth-btns__btn" href="sign-in.html">Sign in</a>
         <a class="auth-btns__btn" href="registration.html">Registration</a>
+      </div>
+      <div class="authed-info hidden">
+        <div class="authed-info__inner">
+          <h2 class="authed-info__title">Address:</h2>
+          <span class="authed-info__address"></span>
+        </div>
+        <div class="authed-info__inner">
+          <h2 class="authed-info__title">Pay by:</h2>
+          <span class="authed-info__pay">Card</span>
+        </div>
+        <button class="authed-info__confirm">Confirm</button>
       </div>
     </section>
   </main>

@@ -1,0 +1,1 @@
+function s(e){const t={login:e.login,city:e.city,street:e.street,houseNumber:e.houseNumber,paymentMethod:e.paymentMethod};localStorage.setItem("userData",JSON.stringify(t))}function a(){const e=localStorage.getItem("userData");return e?JSON.parse(e):null}export{a as g,s};

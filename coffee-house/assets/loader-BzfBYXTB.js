@@ -1,1 +1,0 @@
-function a(d){const e=document.createElement("div");e.className="loader";const n=document.createElement("div");n.className="spinner";const t=document.createElement("p");return t.textContent="Loading products...",e.appendChild(n),e.appendChild(t),d.appendChild(e),e}export{a as i};
