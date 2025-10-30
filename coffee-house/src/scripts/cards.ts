@@ -25,7 +25,6 @@ async function initialCardsLoad() {
     if (loader) {
       loader.remove();
     }
-    console.log(jsonData);
     processData();
   } catch (error) {
     if (loader) {
@@ -34,7 +33,7 @@ async function initialCardsLoad() {
     if (tabsContainer) {
       tabsContainer.innerHTML = `<p class="error-message">Something went wrong. Please, refresh the page</p>`;
     }
-    console.log(error);
+    throw new Error("Something went wrong. Please, refresh the page " + error);
   }
 }
 
@@ -135,7 +134,6 @@ async function generatePopupWithData(id: string) {
     if (loader) {
       loader.remove();
     }
-    console.log(productJsonData);
   } catch (error) {
     setTimeout(() => {
       if (loader) {
@@ -152,7 +150,7 @@ async function generatePopupWithData(id: string) {
       }, 1500);
     }, 1000);
 
-    console.log(error);
+    throw new Error("Something went wrong: " + error);
   }
 }
 

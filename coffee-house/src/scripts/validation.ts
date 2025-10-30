@@ -42,7 +42,7 @@ export function validatePassword(value: string): {
   }
 
   // Must contain at least 1 special character
-  // eslint-disable-next-line no-useless-escape
+
   if (!/[!@#$%^&*()_+=[\]{};':"\\|,.<>/?-]/.test(trimmedValue)) {
     return {
       isValid: false,

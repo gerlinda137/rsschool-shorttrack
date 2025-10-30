@@ -65,7 +65,6 @@ export async function confirmOrder(): Promise<void> {
   } catch (error) {
     const root = document.querySelector("body");
     const loader = document.querySelector(".loader");
-    console.log(error);
     setTimeout(() => {
       if (loader) {
         loader.remove();
@@ -80,5 +79,6 @@ export async function confirmOrder(): Promise<void> {
         popupMessage.remove();
       }, 1500);
     }, 1000);
+    throw new Error("Something went wrong: " + error);
   }
 }

@@ -94,7 +94,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       const response = await loginUser(signInData);
 
-      console.log("Sign In successful!");
       const popupMessage = document.createElement("p");
       popupMessage.className = "popup-success";
       popupMessage.textContent = "Sign In successful!";
@@ -119,7 +118,6 @@ document.addEventListener("DOMContentLoaded", () => {
         window.location.href = "./menu.html";
       }, 1200);
     } catch (error) {
-      console.error("Network error:", error);
       if (loader) {
         loader.remove();
       }

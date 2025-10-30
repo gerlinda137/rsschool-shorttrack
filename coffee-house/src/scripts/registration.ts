@@ -331,7 +331,6 @@ registerBtn.addEventListener("click", async (e) => {
       if (loader) {
         loader.remove();
       }
-      console.log("Registration successful!");
       const popupMessage = document.createElement("p");
       popupMessage.className = "popup-success";
       popupMessage.textContent = "Registration successful!";
@@ -365,7 +364,6 @@ registerBtn.addEventListener("click", async (e) => {
       }
     }
   } catch (error) {
-    console.error("Network error:", error);
     if (requestMessage) {
       requestMessage.textContent = `Registration failed: ${
         (error as Error).message

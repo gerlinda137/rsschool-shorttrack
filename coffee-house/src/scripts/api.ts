@@ -19,7 +19,6 @@ export async function getAllProducts(): Promise<ProductsData> {
     const data: ProductsData = await response.json();
     return data;
   } catch (error) {
-    console.log("failed to load products" + error);
     throw new Error("failed to load products" + error);
   }
 }
@@ -36,7 +35,6 @@ export async function getSingleProduct(
     const data: SingleProductResponse = await response.json();
     return data;
   } catch (error) {
-    console.log("failed to load product" + error);
     throw new Error("failed to load product" + error);
   }
 }
@@ -53,7 +51,6 @@ export async function getFavProducts(): Promise<FavoritesResponse> {
     const data: FavoritesResponse = await response.json();
     return data;
   } catch (error) {
-    console.log("failed to load favorite products" + error);
     throw new Error("failed to favorite load products" + error);
   }
 }
@@ -76,7 +73,6 @@ export async function confirmOrderApi(orderData: OrderData): Promise<boolean> {
     }
     return response.ok;
   } catch (error) {
-    console.error("Network error:", error);
     throw new Error("Failed to post your order" + error);
   }
 }

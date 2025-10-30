@@ -188,8 +188,7 @@ async function initialSlidesLoad() {
     if (slider) {
       slider.innerHTML = `<p class="error-message">Something went wrong. Please, refresh the page</p>`;
     }
-    console.log(error);
+    throw new Error("Something went wrong. Please, refresh the page" + error);
   }
 }
-console.log("загрузился");
 initialSlidesLoad();
