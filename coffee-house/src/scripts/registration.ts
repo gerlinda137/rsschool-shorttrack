@@ -27,6 +27,7 @@ const passwordConfirmError =
 const houseContainer = document.querySelector(".input--house");
 const houseInput = houseContainer?.querySelector("input");
 const houseError = houseContainer?.querySelector(".input__error");
+const root = document.querySelector("body");
 
 //login
 loginInput?.addEventListener("blur", () => {
@@ -331,29 +332,38 @@ registerBtn.addEventListener("click", async (e) => {
         loader.remove();
       }
       console.log("Registration successful!");
-      if (requestMessage) {
-        requestMessage.textContent = "Registration successful!";
-        saveUserData(formData);
-        requestMessage?.classList.add("registration__message--success");
-        setTimeout(() => {
-          window.location.href = "./cart.html";
-        }, 2000);
+      const popupMessage = document.createElement("p");
+      popupMessage.className = "popup-success";
+      popupMessage.textContent = "Registration successful!";
+      if (root) {
+        root.append(popupMessage);
       }
+
+      saveUserData(formData);
+      requestMessage?.classList.add("registration__message--success");
+      setTimeout(() => {
+        window.location.href = "./cart.html";
+      }, 1200);
     } else {
       if (loader) {
         loader.remove();
       }
-      console.error("Registration failed");
-
-      if (requestMessage) {
-        requestMessage.textContent = "Registration failed!";
-        requestMessage?.classList.add("registration__message--fail");
+      const errorText = await response.text();
+      try {
+        const errorData = JSON.parse(errorText);
+        const errorMessage =
+          errorData.error || errorData.message || "Unknown error";
+        throw new Error(errorMessage);
+      } catch {
+        throw new Error(errorText);
       }
     }
   } catch (error) {
     console.error("Network error:", error);
     if (requestMessage) {
-      requestMessage.textContent = `Network error: ${error}`;
+      requestMessage.textContent = `Registration failed: ${
+        (error as Error).message
+      }`;
       requestMessage?.classList.add("registration__message--fail");
     }
   }
