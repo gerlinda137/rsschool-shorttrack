@@ -347,7 +347,7 @@ registerBtn.addEventListener("click", async (e) => {
       saveUserData(userData);
       requestMessage?.classList.add("registration__message--success");
       setTimeout(() => {
-        window.location.href = "./cart.html";
+        window.location.href = "./menu.html";
       }, 1200);
     } else {
       if (loader) {
