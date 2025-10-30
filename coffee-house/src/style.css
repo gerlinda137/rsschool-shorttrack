@@ -1379,29 +1379,33 @@ p {
 
 /*Registration*/
 
-.registration {
+.registration,
+.sign-in {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 100px;
 }
 
-.registration__title {
+.registration__title,
+.sign-in__title {
   margin-bottom: 40px;
   font-size: 60px;
   padding-top: 6px;
 }
 
-.registration-form {
+.registration-form,
+.sign-in-form {
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-bottom: 100px;
   font-family: inherit;
   align-items: center;
   padding: 8px 55px;
 }
 
-.registration-form__submit {
+.registration-form__submit,
+.sign-in-form__submit {
   color: inherit;
   font-family: inherit;
   font-weight: 600;
@@ -1415,18 +1419,21 @@ p {
   transition: all 0.7s;
 }
 
-.registration-form__submit:disabled {
+.registration-form__submit:disabled,
+.sign-in-form__submit:disabled {
   cursor: auto;
   opacity: 0.6;
 }
 
-.registration-form__submit:disabled:hover {
+.registration-form__submit:disabled:hover,
+.sign-in-form__submit:disabled:hover {
   transition: all 0.7s;
   background-color: var(--body);
   color: var(--txt);
 }
 
-.registration-form__submit:hover {
+.registration-form__submit:hover,
+.sign-in-form__submit:hover {
   transition: all 0.7s;
   background-color: var(--container);
   color: var(--txt-light);
@@ -1440,11 +1447,13 @@ p {
   margin-bottom: 46px;
 }
 
-.registration__message.registration__message--success {
+.registration__message.registration__message--success,
+.sign-in__message.sign-in__message--success {
   color: green;
 }
 
-.registration__message.registration__message--fail {
+.registration__message.registration__message--fail,
+.sign-in__message.sign-in__message--fail {
   color: red;
 }
 
@@ -1631,6 +1640,23 @@ p {
 .radio-container input[type="radio"]:checked+.custom-radio {
   border-width: 4px;
 }
+
+.sign-in {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.sign-in-form__inner {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
 
 
 /*tablet*/

@@ -23,6 +23,7 @@ export default defineConfig({
         menu: "src/menu.html",
         cart: "src/cart.html",
         registration: "src/registration.html",
+        signIn: "src/sign-in.html",
       },
     },
   },

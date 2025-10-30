@@ -137,3 +137,21 @@ export function isFormValid(): boolean {
 
   return true;
 }
+
+export function isSignInFormValid(): boolean {
+  const fields = [
+    { selector: ".input--login", type: "input" },
+    { selector: ".input--password", type: "input" },
+  ];
+
+  for (const field of fields) {
+    const element = document.querySelector(field.selector) as HTMLElement;
+
+    if (field.type === "input") {
+      const input = element.querySelector("input") as HTMLInputElement;
+      if (!input.value.trim()) return false;
+    }
+  }
+
+  return true;
+}
