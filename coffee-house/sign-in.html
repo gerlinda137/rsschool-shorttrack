@@ -10,11 +10,10 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/rsschool-shorttrack/coffee-house/assets/favicon-32x32-B_d_cpo_.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/rsschool-shorttrack/coffee-house/assets/favicon-16x16-DdOMjLtT.png">
   <link rel="manifest" href="/rsschool-shorttrack/coffee-house/assets/site-BwHFeIBa.webmanifest">
-  <title>Menu</title>
-  <script type="module" crossorigin src="/rsschool-shorttrack/coffee-house/assets/cart-DrF6Pm_B.js"></script>
+  <title>Home</title>
+  <script type="module" crossorigin src="/rsschool-shorttrack/coffee-house/assets/signIn-DijPGDIA.js"></script>
   <link rel="modulepreload" crossorigin href="/rsschool-shorttrack/coffee-house/assets/script-lRS-rP-L.js">
-  <link rel="modulepreload" crossorigin href="/rsschool-shorttrack/coffee-house/assets/api-BNdEVfLx.js">
-  <link rel="modulepreload" crossorigin href="/rsschool-shorttrack/coffee-house/assets/user-CGwroS8S.js">
+  <link rel="modulepreload" crossorigin href="/rsschool-shorttrack/coffee-house/assets/validation-BKF3-meB.js">
   <link rel="stylesheet" crossorigin href="/rsschool-shorttrack/coffee-house/assets/script-9ubu4e0G.css">
 </head>
 
@@ -91,13 +90,13 @@
         <nav class="nav">
           <ul class="nav-list">
             <li class="nav-list__item">
-              <a href="index.html#favourite" class="nav-list__link">Favorite coffee</a>
+              <a href="#favourite" class="nav-list__link">Favorite coffee</a>
             </li>
             <li class="nav-list__item">
-              <a href="index.html#about" class="nav-list__link">About</a>
+              <a href="#about" class="nav-list__link">About</a>
             </li>
             <li class="nav-list__item">
-              <a href="index.html#app" class="nav-list__link">Mobile app</a>
+              <a href="#app" class="nav-list__link">Mobile app</a>
             </li>
             <li class="nav-list__item">
               <a href="#contact" class="nav-list__link">Contact us</a>
@@ -105,7 +104,7 @@
           </ul>
         </nav>
         <div class="nav__inner">
-          <a href="/cart.html" class="header__cart-link">
+          <a href="cart.html" class="header__cart-link">
             <span class="header__cart-txt visually-hidden">Cart</span>
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
@@ -123,46 +122,26 @@
     </div>
   </header>
   <main class="main container">
-    <section class="cart">
-      <h1 class="cart__title">Cart</h1>
-      <ul class="cart-items">
-        <template id="cart-item-template">
-          <li class="cart-items__item item">
-            <button class="item__delete-btn"></button>
-            <div class="item__card">
-              <img class="item__img" src="" alt="">
-              <div class="item__inner">
-                <h3 class="item__title"></h3>
-                <span class="item__info"></span>
-              </div>
-            </div>
-            <span class="item__quantity"></span>
-            <div class="item__prices">
-              <span class="item__price item__price--old"></span>
-              <span class="item__price item__price--cur"></span>
-            </div>
-          </li>
-        </template>
-      </ul>
-      <div class="cart-total">
-        <h2 class="cart-total__title">Total:</h2>
-        <span class="cart-total__price">$20</span>
-      </div>
-      <div class="auth-btns">
-        <a class="auth-btns__btn" href="sign-in.html">Sign in</a>
-        <a class="auth-btns__btn" href="registration.html">Registration</a>
-      </div>
-      <div class="authed-info hidden">
-        <div class="authed-info__inner">
-          <h2 class="authed-info__title">Address:</h2>
-          <span class="authed-info__address"></span>
+    <section class="sign-in">
+      <h1 class="sign-in__title">Sign in</h1>
+      <form class="sign-in-form">
+        <div class="sign-in-form__inner">
+          <div class="input input--login">
+            <label for="input-login" class="input__label">Login</label>
+            <input type="text" id="input-login" name="input-login" class="input__input" placeholder="Placeholder">
+            <img src="data:image/svg+xml,%3csvg%20width='24px'%20height='24px'%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M2.20164%2018.4695L10.1643%204.00506C10.9021%202.66498%2013.0979%202.66498%2013.8357%204.00506L21.7984%2018.4695C22.4443%2019.6428%2021.4598%2021%2019.9627%2021H4.0373C2.54022%2021%201.55571%2019.6428%202.20164%2018.4695Z'%20stroke='%23e21f1f'%20stroke-width='1'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cpath%20d='M12%209V13'%20stroke='%23e21f1f'%20stroke-width='1'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3cpath%20d='M12%2017.0195V17'%20stroke='%23e21f1f'%20stroke-width='1'%20stroke-linecap='round'%20stroke-linejoin='round'/%3e%3c/svg%3e" alt="error-icon">
+            <span class="input__error">Error message appears here</span>
+          </div>
+          <div class="input input--password">
+            <label for="input-password" class="input__label">Password</label>
+            <input type="password" id="input-password" name="input-password" class="input__input"
+              placeholder="Placeholder">
+            <span class="input__error">Error message appears here</span>
+          </div>
         </div>
-        <div class="authed-info__inner">
-          <h2 class="authed-info__title">Pay by:</h2>
-          <span class="authed-info__pay">Card</span>
-        </div>
-        <button class="authed-info__confirm">Confirm</button>
-      </div>
+        <button class="sign-in-form__submit" disabled>Sign In</button>
+        <span class="sign-in__message"></span>
+      </form>
     </section>
   </main>
   <footer class="footer container">
@@ -175,7 +154,7 @@
           <a href="" class="socials__link"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
               xmlns="http://www.w3.org/2000/svg">
               <g id="twitter">
-                <path id="Vector"
+                <path id="Vector7"
                   d="M23 3.01006C23 3.01006 20.9821 4.20217 19.86 4.54006C19.2577 3.84757 18.4573 3.35675 17.567 3.13398C16.6767 2.91122 15.7395 2.96725 14.8821 3.29451C14.0247 3.62177 13.2884 4.20446 12.773 4.96377C12.2575 5.72309 11.9877 6.62239 12 7.54006V8.54006C10.2426 8.58562 8.50127 8.19587 6.93101 7.4055C5.36074 6.61513 4.01032 5.44869 3 4.01006C3 4.01006 -1 13.0101 8 17.0101C5.94053 18.408 3.48716 19.109 1 19.0101C10 24.0101 21 19.0101 21 7.51006C20.9991 7.23151 20.9723 6.95365 20.92 6.68006C21.9406 5.67355 23 3.01006 23 3.01006Z"
                   stroke="#E1D4C9" stroke-linecap="round" stroke-linejoin="round" />
               </g>
@@ -186,13 +165,13 @@
           <a href="" class="socials__link"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
               xmlns="http://www.w3.org/2000/svg">
               <g id="instagram">
-                <path id="Vector1"
+                <path id="Vector8"
                   d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z"
                   stroke="#E1D4C9" stroke-linecap="round" stroke-linejoin="round" />
-                <path id="Vector_2"
+                <path id="Vector_9"
                   d="M3 16V8C3 5.23858 5.23858 3 8 3H16C18.7614 3 21 5.23858 21 8V16C21 18.7614 18.7614 21 16 21H8C5.23858 21 3 18.7614 3 16Z"
                   stroke="#E1D4C9" />
-                <path id="Vector_3" d="M17.5 6.51L17.51 6.49889" stroke="#E1D4C9" stroke-linecap="round"
+                <path id="Vector_10" d="M17.5 6.51L17.51 6.49889" stroke="#E1D4C9" stroke-linecap="round"
                   stroke-linejoin="round" />
               </g>
             </svg>
@@ -202,7 +181,7 @@
           <a href="" class="socials__link"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
               xmlns="http://www.w3.org/2000/svg">
               <g id="facebook">
-                <path id="Vector4"
+                <path id="Vector11"
                   d="M17 2H14C12.6739 2 11.4021 2.52678 10.4645 3.46447C9.52678 4.40215 9 5.67392 9 7V10H6V14H9V22H13V14H16L17 10H13V7C13 6.73478 13.1054 6.48043 13.2929 6.29289C13.4804 6.10536 13.7348 6 14 6H17V2Z"
                   stroke="#E1D4C9" stroke-linecap="round" stroke-linejoin="round" />
               </g>
@@ -217,11 +196,11 @@
       <ul class="contact-list">
         <li class="contact-list__item">
           <a href="https://maps.app.goo.gl/xRpEvugcorMJivED8" class="contact-list__link contact-list__link--adress"
-            target="_blank">8558 Green Rd., LA</a>
+            target="_blank">8558
+            Green Rd., LA</a>
         </li>
         <li class="contact-list__item">
-          <a href="tel:+1(603)555-0123" class="contact-list__link contact-list__link--tel">+1 (603)
-            555-0123</a>
+          <a href="tel:+1(603)555-0123" class="contact-list__link contact-list__link--tel">+1 (603) 555-0123</a>
         </li>
         <li class="contact-list__item">
           <a href="" class="contact-list__link contact-list__link--hours">Mon-Sat: 9:00 AM – 23:00 PM</a>
