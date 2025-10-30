@@ -296,6 +296,7 @@ function generatePopup(productData: SingleProduct): void {
 //popup math
 
 function calcPrice(productData: SingleProduct) {
+  const userData = getUserData();
   let price = 0;
   const checkboxes = document.querySelectorAll(".checkbox input");
   const sizeList = document.querySelector(
@@ -306,7 +307,11 @@ function calcPrice(productData: SingleProduct) {
   for (const size of sizes) {
     if (size.checked === true) {
       const sizeValue = size.id as keyof Sizes;
-      price = Number(productData.sizes[sizeValue].price);
+      const sizeData = productData.sizes[sizeValue];
+      price =
+        userData && sizeData.discountPrice
+          ? Number(sizeData.discountPrice)
+          : Number(sizeData.price);
       break;
     }
   }
@@ -338,7 +343,11 @@ function calcPrice(productData: SingleProduct) {
     for (const size of sizes) {
       if (size.checked == true) {
         const sizeValue = size.id as keyof Sizes;
-        price = Number(productData.sizes[sizeValue].price);
+        const sizeData = productData.sizes[sizeValue];
+        price =
+          userData && sizeData.discountPrice
+            ? Number(sizeData.discountPrice)
+            : Number(sizeData.price);
         break;
       }
     }
@@ -348,7 +357,12 @@ function calcPrice(productData: SingleProduct) {
     for (const add of adds) {
       if (add.checked == true) {
         const addValue = parseInt(add.id);
-        price += Number(productData.additives[addValue].price);
+        const additiveData = productData.additives[addValue];
+        const additivePrice =
+          userData && additiveData.discountPrice
+            ? Number(additiveData.discountPrice)
+            : Number(additiveData.price);
+        price += additivePrice;
       }
     }
   }
@@ -381,14 +395,24 @@ function calculateTotalPrice(
   selectedAdditives: { id: string; name: string }[]
 ): number {
   let price = 0;
+  const userData = getUserData();
 
   if (selectedSize) {
-    price += Number(productData.sizes[selectedSize as keyof Sizes].price);
+    const sizeData = productData.sizes[selectedSize as keyof Sizes];
+    price =
+      userData && sizeData.discountPrice
+        ? Number(sizeData.discountPrice)
+        : Number(sizeData.price);
   }
 
   for (const additiveId of selectedAdditives) {
     const index = parseInt(additiveId.id);
-    price += Number(productData.additives[index].price);
+    const additiveData = productData.additives[index];
+    const additivePrice =
+      userData && additiveData.discountPrice
+        ? Number(additiveData.discountPrice)
+        : Number(additiveData.price);
+    price += additivePrice;
   }
 
   return price;
