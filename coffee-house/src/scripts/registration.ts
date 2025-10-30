@@ -6,7 +6,7 @@ import {
   validatePassword,
   validatePasswordConfirm,
 } from "./validation";
-import { FormData } from "./interfaces";
+import { FormData, UserData } from "./interfaces";
 import { saveUserData } from "./user";
 
 const loginContainer = document.querySelector(".input--login");
@@ -338,8 +338,14 @@ registerBtn.addEventListener("click", async (e) => {
       if (root) {
         root.append(popupMessage);
       }
-
-      saveUserData(formData);
+      const userData: UserData = {
+        login: formData.login,
+        city: formData.city,
+        street: formData.street,
+        houseNumber: formData.houseNumber,
+        paymentMethod: formData.paymentMethod,
+      };
+      saveUserData(userData);
       requestMessage?.classList.add("registration__message--success");
       setTimeout(() => {
         window.location.href = "./cart.html";

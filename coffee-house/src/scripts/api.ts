@@ -1,5 +1,7 @@
 import {
   FavoritesResponse,
+  LoginData,
+  LoginResponse,
   OrderData,
   ProductsData,
   SingleProductResponse,
@@ -76,5 +78,34 @@ export async function confirmOrderApi(orderData: OrderData): Promise<boolean> {
   } catch (error) {
     console.error("Network error:", error);
     throw new Error("Failed to post your order" + error);
+  }
+}
+
+export async function loginUser(loginData: LoginData): Promise<LoginResponse> {
+  try {
+    const response = await fetch(
+      "https://6kt29kkeub.execute-api.eu-central-1.amazonaws.com/auth/login",
+      {
+        method: "POST",
+        headers: {
+          accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(loginData),
+      }
+    );
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(errorText || "Login failed");
+    }
+
+    const result: LoginResponse = await response.json();
+    return result;
+  } catch (error) {
+    if (error instanceof Error) {
+      throw error;
+    } else {
+      throw new Error(String(error));
+    }
   }
 }

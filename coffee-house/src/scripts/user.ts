@@ -1,14 +1,6 @@
-import { UserData, FormData } from "./interfaces";
+import { UserData } from "./interfaces";
 
-export function saveUserData(formData: FormData): void {
-  const userData = {
-    login: formData.login,
-    city: formData.city,
-    street: formData.street,
-    houseNumber: formData.houseNumber,
-    paymentMethod: formData.paymentMethod,
-  };
-
+export function saveUserData(userData: UserData): void {
   localStorage.setItem("userData", JSON.stringify(userData));
 }
 

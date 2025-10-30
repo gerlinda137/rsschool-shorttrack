@@ -90,6 +90,7 @@ export interface UserData {
   street: string;
   houseNumber: number;
   paymentMethod: string;
+  access_token?: string;
 }
 
 interface OrderItem {
@@ -102,4 +103,25 @@ interface OrderItem {
 export interface OrderData {
   items: OrderItem[];
   totalPrice: number;
+}
+
+export interface LoginData {
+  login: string;
+  password: string;
+}
+
+export interface LoginResponse {
+  data: {
+    access_token: string;
+    user: {
+      id: number;
+      login: string;
+      city: string;
+      street: string;
+      houseNumber: number;
+      paymentMethod: string;
+      createdAt: string;
+    };
+  };
+  message: string;
 }
