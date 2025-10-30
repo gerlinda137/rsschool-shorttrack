@@ -2,6 +2,7 @@ import { CartItemLocal, Product, SingleProduct, Sizes } from "./interfaces";
 import { getAllProducts, getSingleProduct } from "./api";
 import { addToCartLocal, updateCartInHeader } from "./cart";
 import { insertLoader } from "./loader";
+import { getUserData } from "./user";
 
 let jsonData: Product[] = [];
 const tabsContainer = document.querySelector(".tabs") as HTMLDivElement;
@@ -39,6 +40,7 @@ async function initialCardsLoad() {
 
 function processData(category: string = "coffee") {
   const products: Product[] = [];
+  const userData = getUserData();
   moreCardsBtn.classList.remove("hidden");
 
   for (const iterator of jsonData) {
@@ -65,7 +67,7 @@ function processData(category: string = "coffee") {
 
     if (cardTitle) cardTitle.textContent = product.name;
     if (cardDescription) cardDescription.textContent = product.description;
-    if (cardPriceOld && product.discountPrice) {
+    if (userData && product.discountPrice) {
       cardPriceCurrent.textContent = `$${product.discountPrice}`;
       cardPriceOld.textContent = `$${product.price}`;
     } else {
