@@ -173,10 +173,11 @@ function generatePopup(productData: SingleProduct): void {
   const popupImg = popupClone.querySelector(
     ".popup__img img"
   ) as HTMLImageElement;
+  const userData = getUserData();
 
   if (popupTitle) popupTitle.textContent = productData.name;
   if (popupDescription) popupDescription.textContent = productData.description;
-  if (totalPriceCurrent && productData.discountPrice) {
+  if (userData && productData.discountPrice) {
     totalPriceCurrent.textContent = `$${productData.discountPrice}`;
     totalPriceOld.textContent = `$${productData.price}`;
   } else {
