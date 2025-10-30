@@ -116,7 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       setTimeout(() => {
-        window.location.href = "./cart.html";
+        window.location.href = "./menu.html";
       }, 1200);
     } catch (error) {
       console.error("Network error:", error);
