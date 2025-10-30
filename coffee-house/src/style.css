@@ -411,11 +411,22 @@ p {
   text-align: center;
 }
 
-.slider__price {
+.slider__price-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
   margin-bottom: 40px;
+}
+
+.slider__price {
   font-size: 24px;
   font-weight: 600;
   line-height: 125%;
+}
+
+.slider__price--old {
+  opacity: 50%;
+  text-decoration: line-through;
 }
 
 .slider__pagination {

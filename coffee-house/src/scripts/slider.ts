@@ -1,6 +1,7 @@
 import { getFavProducts } from "./api";
 import { insertLoader } from "./loader";
 import { FavoriteProduct } from "./interfaces";
+import { getUserData } from "./user";
 
 const slider = document.querySelector(".slider") as HTMLElement;
 const sliderTemplate = document.getElementById(
@@ -116,6 +117,8 @@ function generateSliderCards(products: FavoriteProduct[]): void {
     cardsTrack.innerHTML = "";
   }
 
+  const userData = getUserData();
+
   for (const product of products) {
     const clone = sliderTemplate.content.cloneNode(true) as DocumentFragment;
     const sliderCard = clone.querySelector(".slider-card") as HTMLDivElement;
@@ -125,13 +128,24 @@ function generateSliderCards(products: FavoriteProduct[]): void {
     const description = clone.querySelector(
       ".slider__description"
     ) as HTMLParagraphElement;
-    const price = clone.querySelector(".slider__price") as HTMLHeadingElement;
+    const price = clone.querySelector(
+      ".slider__price--cur"
+    ) as HTMLHeadingElement;
+    const priceOld = clone.querySelector(
+      ".slider__price--old"
+    ) as HTMLHeadingElement;
 
     img.src = `img/cards-nobg/${product.name}.png`;
     img.alt = `${product.name} image`;
     title.textContent = product.name;
     description.textContent = product.description;
-    price.textContent = `$${product.discountPrice || product.price}`;
+
+    if (userData) {
+      price.textContent = `$${product.discountPrice}`;
+      priceOld.textContent = `$${product.price}`;
+    } else {
+      price.textContent = `$${product.price}`;
+    }
 
     cardsTrack.appendChild(sliderCard);
     cardWidth = sliderCard.offsetWidth;
@@ -149,7 +163,6 @@ async function initialSlidesLoad() {
     if (loader) {
       loader.remove();
     }
-    console.log(jsonData);
     generateSliderCards(jsonData);
     setInterval(() => {
       if (!cursorOnSlider) {
