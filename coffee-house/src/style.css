@@ -45,7 +45,6 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  height: 100%;
   margin: 0;
   font-family: "Inter", sans-serif;
   font-weight: 400;
@@ -254,7 +253,9 @@ p {
   position: absolute;
   width: 20px;
   height: 20px;
-  background-image: url('img/icons/coffee-cup.svg');
+  background-color: var(--txt);
+  -webkit-mask-image: url('img/icons/coffee-cup.svg');
+          mask-image: url('img/icons/coffee-cup.svg');
   background-repeat: no-repeat;
   background-size: cover;
   right: 0;
@@ -327,10 +328,12 @@ p {
   content: '';
   width: 20px;
   height: 20px;
-  background-image: url('img/icons/coffee-cup.svg');
+  background-color: var(--txt);
+  -webkit-mask-image: url('img/icons/coffee-cup.svg');
+  mask-image: url('img/icons/coffee-cup.svg');
   position: absolute;
   top: 50%;
-  transform: translate(0, -50%);
+  transform: translate(0, -60%);
   right: 50px;
   opacity: 0;
   transition: all 0.7s;
@@ -729,7 +732,9 @@ p {
   position: absolute;
   left: 0;
   top: 50%;
-  background-image: url('img/icons/phone.svg');
+  background-color: var(--txt-light);
+  -webkit-mask-image: url('img/icons/phone.svg');
+  mask-image: url('img/icons/phone.svg');
   transform: translate(0, -50%);
 }
 
@@ -740,7 +745,9 @@ p {
   position: absolute;
   left: 0;
   top: 50%;
-  background-image: url('img/icons/pin-alt.svg');
+  background-color: var(--txt-light);
+  -webkit-mask-image: url('img/icons/pin-alt.svg');
+  mask-image: url('img/icons/pin-alt.svg');
   transform: translate(0, -50%);
 }
 
@@ -751,7 +758,9 @@ p {
   position: absolute;
   left: 0;
   top: 50%;
-  background-image: url('img/icons/clock.svg');
+  background-color: var(--txt-light);
+  -webkit-mask-image: url('img/icons/clock.svg');
+  mask-image: url('img/icons/clock.svg');
   transform: translate(0, -50%);
 }
 
