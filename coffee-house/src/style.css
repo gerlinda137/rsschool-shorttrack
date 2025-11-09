@@ -1,5 +1,5 @@
 :root {
-  --transition: 0s;
+  --transition: 0.2s;
   --body: #E1D4C9;
   --container: #665F55;
   --popup-bg: rgba(102, 95, 85, 0.8);
@@ -42,6 +42,7 @@ html {
 }
 
 body {
+  transition: var(--transition);
   display: flex;
   flex-direction: column;
   min-height: 100vh;
