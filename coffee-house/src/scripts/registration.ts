@@ -185,6 +185,9 @@ function initializeDropdowns(): void {
     const toggle = dropdown.querySelector(
       ".input__dropdown-toggle"
     ) as HTMLButtonElement;
+    const arrow = dropdown.querySelector(
+      ".input__dropdown-arrow"
+    ) as HTMLSpanElement;
     const menu = dropdown.querySelector(
       ".input__dropdown-menu"
     ) as HTMLUListElement;
@@ -199,6 +202,7 @@ function initializeDropdowns(): void {
 
     toggle.addEventListener("click", (e) => {
       e.stopPropagation();
+      arrow.classList.toggle("show");
       menu.classList.toggle("show");
     });
 
@@ -208,6 +212,7 @@ function initializeDropdowns(): void {
         text.textContent = item.textContent || "";
         text.style.color = "var(--txt)";
         menu.classList.remove("show");
+        arrow.classList.remove("show");
 
         if (dropdown.classList.contains("input--city")) {
           updateStreets(selectedValue);
@@ -222,6 +227,7 @@ function initializeDropdowns(): void {
         ) as HTMLUListElement;
         if (!dropdown.contains(e.target as Node)) {
           menu.classList.remove("show");
+          arrow.classList.remove("show");
         }
       });
     });

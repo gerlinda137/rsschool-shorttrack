@@ -255,7 +255,7 @@ p {
   height: 20px;
   background-color: var(--txt);
   -webkit-mask-image: url('img/icons/coffee-cup.svg');
-          mask-image: url('img/icons/coffee-cup.svg');
+  mask-image: url('img/icons/coffee-cup.svg');
   background-repeat: no-repeat;
   background-size: cover;
   right: 0;
@@ -1559,9 +1559,12 @@ p {
 /*dropdown*/
 .input--dropdown {
   position: relative;
+  font-family: inherit;
 }
 
 .input__dropdown-toggle {
+  font-family: inherit;
+  font-size: inherit;
   width: 100%;
   padding: 18px 12px;
   border: 1px solid var(--border-light);
@@ -1582,6 +1585,20 @@ p {
   color: var(--placeholder);
 }
 
+.input__dropdown-arrow {
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  right: 10px;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 59.414 59.414'%3E%3Cpolygon fill='%23000000' points='29.707,45.268 0,15.561 1.414,14.146 29.707,42.439 58,14.146 59.414,15.561 '%3E%3C/polygon%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 59.414 59.414'%3E%3Cpolygon fill='%23000000' points='29.707,45.268 0,15.561 1.414,14.146 29.707,42.439 58,14.146 59.414,15.561 '%3E%3C/polygon%3E%3C/svg%3E");
+  background-color: var(--txt);
+}
+
+.input__dropdown-arrow.show {
+  transform: scaleY(-1);
+}
+
 .input__dropdown-menu {
   position: absolute;
   top: 100%;
@@ -1592,7 +1609,7 @@ p {
   list-style: none;
   border: 1px solid var(--border-light);
   border-radius: 12px;
-  background: white;
+  background: var(--popup-bg);
   display: none;
   z-index: 10;
 }
@@ -1612,7 +1629,7 @@ p {
 }
 
 .input__dropdown-item:hover {
-  background: #f8f9fa;
+  opacity: 0.7;
 }
 
 .input__dropdown-item:hover:first-child {
