@@ -10,7 +10,7 @@
     "copy-assets": "cp -r src/img dist/coffee-house/ && cp src/favicon.ico dist/coffee-house/ && cp src/*.png dist/coffee-house/ && cp src/site.webmanifest dist/coffee-house/",
     "full-build": "npm run build && npm run copy-assets",
     "deploy": "npm run full-build && gh-pages -d dist -r https://github.com/gerlinda137/rsschool-shorttrack.git",
-    "prepare": "husky"
+    "prepare": "cd .. && husky coffee-house/.husky"
   },
   "devDependencies": {
     "@eslint/js": "^9.37.0",
