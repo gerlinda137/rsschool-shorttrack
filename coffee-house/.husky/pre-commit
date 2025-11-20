@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+cd coffee-house
+npm run lint

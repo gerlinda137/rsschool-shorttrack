@@ -1,0 +1,28 @@
+{
+  "name": "coffee-house",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint src --ext .js,.ts,.tsx",
+    "lint:fix": "eslint src --ext .js,.ts,.tsx --fix",
+    "copy-assets": "cp -r src/img dist/coffee-house/ && cp src/favicon.ico dist/coffee-house/ && cp src/*.png dist/coffee-house/ && cp src/site.webmanifest dist/coffee-house/",
+    "full-build": "npm run build && npm run copy-assets",
+    "deploy": "npm run full-build && gh-pages -d dist -r https://github.com/gerlinda137/rsschool-shorttrack.git",
+    "prepare": "cd .. && husky coffee-house/.husky"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.37.0",
+    "@typescript-eslint/eslint-plugin": "^8.46.1",
+    "@typescript-eslint/parser": "^8.46.1",
+    "eslint": "^9.37.0",
+    "gh-pages": "^6.3.0",
+    "globals": "^16.4.0",
+    "husky": "^9.1.7",
+    "typescript": "^5.9.3",
+    "vite": "^7.1.10",
+    "vite-plugin-copy": "^0.1.6",
+    "vite-plugin-eslint": "^1.8.1"
+  }
+}
